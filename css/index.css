@@ -229,7 +229,7 @@ section {
 }
 
 .content2 {
-  padding: 3% 10% 5%;
+  padding: 10% 10% 15%;
 }
 
 .content2 .about {
@@ -242,7 +242,7 @@ section {
   font-family: "Montserrat", sans-serif;
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 
 .content2 .about ul {
