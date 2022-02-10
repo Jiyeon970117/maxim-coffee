@@ -1,5 +1,7 @@
 'use strict';
 const Word = document.querySelector('#word');
+const hIcon = document.querySelectorAll('i');
+console.log(hIcon)
 let $newWord;
 function init(){
 
