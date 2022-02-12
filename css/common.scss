@@ -145,6 +145,19 @@ header{
       @include flexbox;
       li{
         padding: 8px 12px;
+        a{
+          i{
+            width: 18px;
+            &::before{
+              font-size: 18px;
+            }
+          }
+        }
+        &:nth-of-type(2){
+          a{
+            @include flexbox;
+          }
+        }  
       }
     }
   }

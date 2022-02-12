@@ -1,3 +1,4 @@
+
 $(function(){
   $('header').load('inc.html header > nav',head);
   // $('footer').load('inc.html footer > div');

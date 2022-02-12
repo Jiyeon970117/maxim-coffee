@@ -157,6 +157,26 @@ header .navbar .navbar-icons li {
   padding: 8px 12px;
 }
 
+header .navbar .navbar-icons li a i {
+  width: 18px;
+}
+
+header .navbar .navbar-icons li a i::before {
+  font-size: 18px;
+}
+
+header .navbar .navbar-icons li:nth-of-type(2) a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .content1 .category {
   margin-top: 80px;
   border-bottom: 1px solid #f5f5f5;
@@ -238,7 +258,7 @@ header .navbar .navbar-icons li {
   padding: 3px 10px;
 }
 
-.prd-list ul {
+.prd-list {
   width: 80%;
   margin: 0 auto;
   display: -webkit-box;
@@ -254,50 +274,50 @@ header .navbar .navbar-icons li {
       flex-wrap: wrap;
 }
 
-.prd-list ul li {
+.prd-list li {
   width: calc(100%/4);
   padding: 20px;
   height: 600px;
 }
 
-.prd-list ul li figure {
+.prd-list li figure {
   width: 100%;
 }
 
-.prd-list ul li figure img {
+.prd-list li figure img {
   width: 100%;
   height: 100%;
 }
 
-.prd-list ul li figure p {
+.prd-list li figure p {
   text-align: center;
   margin: 20px 0;
 }
 
-.prd-list ul li figure p span {
-  font-weight: 400;
+.prd-list li figure p .heart-icon {
+  padding: 8px 12px;
 }
 
-.prd-list ul li figure p span:first-child {
-  margin-right: 15px;
-}
-
-.prd-list ul li figure p span:first-child i {
+.prd-list li figure p .heart-icon i {
   color: red;
 }
 
-.prd-list ul li figure .name-title {
+.prd-list li figure p span {
+  font-weight: 400;
+}
+
+.prd-list li figure .name-title {
   color: #555;
   font-weight: 300;
   text-align: center;
 }
 
-.prd-list ul li figure .name-title p {
+.prd-list li figure .name-title p {
   margin: 0 0 10px 0;
   font-size: 12px;
 }
 
-.prd-list ul li figure .name-title strong {
+.prd-list li figure .name-title strong {
   display: inline-block;
   width: 100%;
   text-align: center;
@@ -305,11 +325,11 @@ header .navbar .navbar-icons li {
   font-weight: 800;
 }
 
-.prd-list ul li figure .name-title span:nth-of-type(2) {
+.prd-list li figure .name-title span:nth-of-type(2) {
   font-size: 12px;
 }
 
-.prd-list ul li:nth-of-type(4), .prd-list ul li:nth-of-type(8) {
+.prd-list li:nth-of-type(4), .prd-list li:nth-of-type(8) {
   margin-right: 0;
 }
 /*# sourceMappingURL=sub-1.css.map */

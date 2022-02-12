@@ -1,7 +1,6 @@
 'use strict';
+
 const Word = document.querySelector('#word');
-const hIcon = document.querySelectorAll('i');
-console.log(hIcon)
 let $newWord;
 function init(){
 
@@ -13,9 +12,8 @@ function init(){
   }
 
   function createItem(list){
-    const Lists = document.querySelector('.prd-list ul')
-    Lists.innerHTML = list.map( (item) => 
-      createHtmlString(item)).join('');
+    const Lists = document.querySelector('.prd-list')
+    Lists.innerHTML = list.map( (item) => createHtmlString(item)).join('');
   }
 
   function createHtmlString(item){
@@ -24,7 +22,7 @@ function init(){
             <figure>
               <img src=${item.img}>
               <p>
-                <span>
+                <span class="heart-icon">
                   <i class="far fa-heart"></i>
                 </span>
                 <span>
@@ -42,6 +40,8 @@ function init(){
           </li>
           `;
   }
+  
+  
 
   //banner 바꾸기
   function WordChange(value){
@@ -64,20 +64,63 @@ function init(){
 
   //category update
   function UpdateItem(list,key,value){
-    const Btn = document.querySelectorAll('.prd-list ul li');
+    const PrdList = document.querySelectorAll('.prd-list li');
+    // console.log(PrdList)
     list.forEach( (item, index) => {
       if(item[key] === value){
-        Btn[index].classList.remove('invisible')
+        PrdList[index].classList.remove('invisible')
         WordChange(value)
       }else{
-        Btn[index].classList.add('invisible')
+        PrdList[index].classList.add('invisible')
       }
     });
   }
 
+  const toDo = [];
+
+  //localstorage-setItem
+  function setLocalsStorage(toDO){
+    localStorage.setItem('list', JSON.stringify(toDO))
+  }
+
+  let $Count = 0;
+  const menuCount = document.querySelector('.menu-count');
+
+  //CountUp함수
+  function CountUp(){
+    $Count ++;
+    menuCount.innerText = `(${$Count})`;
+  }
+
+  //CountDown함수
+  function CountDown(){
+    $Count --;
+    menuCount.innerText = `(${$Count})`;
+  }
+
+  //위시리스트
+  function Wishlist(e){
+    const FIcon = e.target.closest('i')
+    const List = e.target.parentNode.closest('li');
+    if(FIcon == null){
+      return
+    }else if(FIcon.classList.contains('far')){
+      FIcon.setAttribute('class', 'fas fa-heart');
+      CountUp()
+      alert('장바구니에 추가됐습니다.')
+      toDo.push(List)
+      return
+    }
+    confirm('취소하시겠습니까?') ? 
+    ( CountDown(), FIcon.setAttribute('class', 'far fa-heart') ) 
+    : FIcon.setAttribute('class', 'fas fa-heart') ;     
+  }
+
   function setEventListeners(list){
     const MenuBtns = document.querySelector('.menucategory');
+    const Lists = document.querySelector('.prd-list');
     MenuBtns.addEventListener('click', (e) => onBtnClick(e, list));
+    Lists.addEventListener('click', (e) => Wishlist(e));
   }
 
   loadItems()

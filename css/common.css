@@ -156,4 +156,24 @@ header .navbar .navbar-icons {
 header .navbar .navbar-icons li {
   padding: 8px 12px;
 }
+
+header .navbar .navbar-icons li a i {
+  width: 18px;
+}
+
+header .navbar .navbar-icons li a i::before {
+  font-size: 18px;
+}
+
+header .navbar .navbar-icons li:nth-of-type(2) a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 /*# sourceMappingURL=common.css.map */
