@@ -23,7 +23,7 @@ function init(){
               <img src=${item.img}>
               <p>
                 <span class="heart-icon">
-                  <i class="far fa-heart"></i>
+                  <i class="far fa-heart ${item.number}"></i>
                 </span>
                 <span>
                   <i class="fas fa-shopping-cart"></i>
@@ -65,8 +65,8 @@ function init(){
   //category update
   function UpdateItem(list,key,value){
     const PrdList = document.querySelectorAll('.prd-list li');
-    // console.log(PrdList)
     list.forEach( (item, index) => {
+      console.log(item)
       if(item[key] === value){
         PrdList[index].classList.remove('invisible')
         WordChange(value)
@@ -76,44 +76,80 @@ function init(){
     });
   }
 
-  const toDo = [];
+  let Cart = [];
 
   //localstorage-setItem
-  function setLocalsStorage(toDO){
-    localStorage.setItem('list', JSON.stringify(toDO))
+  function setLocalsStorage(){
+    localStorage.setItem('list', JSON.stringify(Cart))
   }
 
+  // localstorage-getItem
+  const savedCart = localStorage.getItem('list');
+
+  //JSON.parse
+  if(savedCart !== null){
+    const ParsedCart = JSON.parse(savedCart);
+    console.log(ParsedCart)
+    ParsedCart.forEach(Basket)
+  }
+
+
   let $Count = 0;
-  const menuCount = document.querySelector('.menu-count');
 
   //CountUp함수
   function CountUp(){
+    const menuCount = document.querySelector('.menu-count');
     $Count ++;
     menuCount.innerText = `(${$Count})`;
   }
 
   //CountDown함수
   function CountDown(){
+    const menuCount = document.querySelector('.menu-count');
     $Count --;
     menuCount.innerText = `(${$Count})`;
+  }
+
+  function Basket(item){
+    const FIcon = document.querySelectorAll('.fa-heart')
+    // console.log(FIcon)
+    // const FIcon = e.target.closest('i')
+    // console.log(typeof item)
+    // console.log(FIcon)
+    // FIcon.className = item
+    // if(FIcon == null){
+    //   return
+    // }else if(FIcon.classList.contains('far')){
+    //   FIcon.classList.replace('far', 'fas');
+    //   // FIcon.setAttribute('class', 'fas fa-heart');
+    //   CountUp()
+    //   alert('장바구니에 추가됐습니다.')
+    //   return
+    // }
+    // confirm('취소하시겠습니까?') ? 
+    // ( CountDown(), FIcon.classList.replace('fas', 'fas') ) 
+    // : FIcon.classList.replace('far', 'fas') ;     
   }
 
   //위시리스트
   function Wishlist(e){
     const FIcon = e.target.closest('i')
-    const List = e.target.parentNode.closest('li');
-    if(FIcon == null){
-      return
-    }else if(FIcon.classList.contains('far')){
-      FIcon.setAttribute('class', 'fas fa-heart');
-      CountUp()
-      alert('장바구니에 추가됐습니다.')
-      toDo.push(List)
-      return
-    }
-    confirm('취소하시겠습니까?') ? 
-    ( CountDown(), FIcon.setAttribute('class', 'far fa-heart') ) 
-    : FIcon.setAttribute('class', 'fas fa-heart') ;     
+    const List = FIcon.className;
+    Cart.push(List)
+    setLocalsStorage()
+    Basket()
+    // if(FIcon == null){
+    //   return
+    // }else if(FIcon.classList.contains('far')){
+    //   FIcon.classList.replace('far', 'fas');
+    //   // FIcon.setAttribute('class', 'fas fa-heart');
+    //   CountUp()
+    //   alert('장바구니에 추가됐습니다.')
+    //   return
+    // }
+    // confirm('취소하시겠습니까?') ? 
+    // ( CountDown(), FIcon.classList.replace('fas', 'far') ) 
+    // : FIcon.classList.replace('far', 'fas') ;     
   }
 
   function setEventListeners(list){
@@ -123,9 +159,11 @@ function init(){
     Lists.addEventListener('click', (e) => Wishlist(e));
   }
 
+  
+
+
   loadItems()
   .then( (list) => {
-    // console.log(list)
     createItem(list)
     setEventListeners(list)
   })
@@ -134,3 +172,17 @@ function init(){
 
 }
 window.onload = init;
+
+  // function Basket(e, List, FIcon){
+  //   if(FIcon == null){
+  //     return
+  //   }else if(FIcon.classList.contains('far')){
+  //     FIcon.setAttribute('class', 'fas fa-heart');
+  //     CountUp()
+  //     alert('장바구니에 추가됐습니다.')
+  //     return
+  //   }
+  //   confirm('취소하시겠습니까?') ? 
+  //   ( CountDown(), FIcon.setAttribute('class', 'far fa-heart') ) 
+  //   : FIcon.setAttribute('class', 'fas fa-heart') ;     
+  // }

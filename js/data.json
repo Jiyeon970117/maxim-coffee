@@ -7,7 +7,8 @@
         "price":"17,000원",
         "info":"초콜릿과 견과류 조화의 <br> 깊고 진한 풍미",
         "type": "coffee",
-        "category": "Blend"
+        "category": "Blend",
+        "number": "1"
     },
     {
         "img":"./img/sub-coffee-2-2.jpg",
@@ -16,7 +17,8 @@
         "price":"22,000원",
         "info":"살구와 사과에서 느낄 수 있는 <br> 상큼함과 부드러운 목넘김",
         "type": "coffee",
-        "category": "Decaffeine"
+        "category": "Decaffeine",
+        "number": "2"
     },
     {
         "img":"./img/sub-coffee-3-3.jpg",
@@ -25,7 +27,8 @@
         "price":"17,000원",
         "info":"상큼한 과일과 허브향의 <br> 기분좋은 산미",
         "type": "coffee",
-        "category": "Blend"
+        "category": "Blend",
+        "number": "3"
     },
     {
         "img":"./img/sub-coffee-4-4.jpg",
@@ -34,8 +37,8 @@
         "price":"18,000원",
         "info":"달콤쌉쌀한 초콜릿과 <br> 고소한 견과류의 묵직한 풍미",
         "type": "coffee",
-        "category": "SingleOrigin"
-
+        "category": "SingleOrigin",
+        "number": "4"
     },
     {
         "img":"./img/sub-coffee-5-5.jpg",
@@ -44,8 +47,8 @@
         "price":"22,000원",
         "info":"아카시아 꽃과 시트러스 향미의 <br> 매력적인 조화",
         "type": "coffee",
-        "category": "SingleOrigin"
-
+        "category": "SingleOrigin",
+        "number": "5"
     },
     {
         "img":"./img/sub-coffee-6-6.jpg",
@@ -54,8 +57,8 @@
         "price":"20,000원",
         "info":"입 안 가득 채우는 <br> 오렌지와 자두의 새콤한 과즙미",
         "type": "coffee",
-        "category": "SingleOrigin"
-
+        "category": "SingleOrigin",
+        "number": "6"
     },
     {
         "img":"./img/sub-coffee-7-7.jpg",
@@ -64,8 +67,8 @@
         "price":"22,000원",
         "info":"청사과와 자두의 달콤함과 <br> 깔끔한 산미의 조화",
         "type": "coffee",
-        "category": "SingleOrigin"
-
+        "category": "SingleOrigin",
+        "number": "7"
     },
     {
         "img":"./img/sub-coffee-8-8.jpg",
@@ -74,8 +77,8 @@
         "price":"22,000원",
         "info":"스모키 향과 함께 <br> 고소한 맛, 카카오 같은 쌉싸름함",
         "type": "coffee",
-        "category": "Decaffeine"
-
+        "category": "Decaffeine",
+        "number": "8"
     },
     {
         "img":"./img/sub-coffee-9-9.jpg",
@@ -84,8 +87,8 @@
         "price":"20,000원",
         "info":"살구, 체리의 달콤한 향과 <br> 산미가 가져다주는 긴 여운",
         "type": "coffee",
-        "category": "SingleOrigin"
-
+        "category": "SingleOrigin",
+        "number": "9"
     }
 ],
 
