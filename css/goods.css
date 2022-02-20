@@ -309,4 +309,161 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
 .Items li:nth-of-type(4), .Items li:nth-of-type(8) {
   margin-right: 0;
 }
-/*# sourceMappingURL=sub-2.css.map */
+
+.popup {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  display: none;
+}
+
+.popup .modal {
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.popup .modal .row1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5%;
+}
+
+.popup .modal .row1 .product .detail {
+  width: 500px;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.popup .modal .row1 .product .detail img {
+  width: 100%;
+  height: 100%;
+}
+
+.popup .modal .row1 .product .img-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+}
+
+.popup .modal .row1 .product .img-list li {
+  margin-right: 10px;
+}
+
+.popup .modal .row1 .product .img-list li figure {
+  width: 80px;
+  height: 80px;
+}
+
+.popup .modal .row1 .product .img-list li figure img {
+  width: 100%;
+  height: 100%;
+}
+
+.popup .modal .row1 .product-info {
+  width: 55%;
+}
+
+.popup .modal .row1 .product-info h2 {
+  margin-bottom: 50px;
+}
+
+.popup .modal .row1 .product-info table {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.popup .modal .row1 .product-info table th {
+  width: 120px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.popup .modal .row1 .product-info table td {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px dotted #dcdcdc;
+}
+
+.popup .modal .row1 .product-info table td span {
+  color: #555555;
+}
+
+.popup .modal .row1 .product-info .product-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup .modal .row1 .product-info .product-btns div a {
+  display: inline-block;
+  width: 150px;
+  height: 70px;
+  background: #fff;
+  padding: 10%;
+  text-align: center;
+  border: 1px solid #d1d1d1;
+}
+
+.popup .modal .row1 .product-info .product-btns div a i {
+  font-size: 20px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.popup .modal .row1 .product-info .product-btns div a .fa-heart {
+  color: red;
+}
+
+.popup .modal .row1 .product-info .product-btns div a:hover {
+  opacity: 0.8;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  background-color: #f3f3f3;
+}
+
+.popup .modal .row1 .product-info .product-btns div:nth-of-type(1) a {
+  width: 230px;
+  color: #fff;
+  background-color: #000;
+}
+
+.popup .modal .row1 .product-info .product-btns div:nth-of-type(1) a:hover {
+  background-color: #212121;
+}
+/*# sourceMappingURL=goods.css.map */

@@ -207,7 +207,7 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
 }
 
 .content1 .menu-categorybox {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 .content1 .banner {
@@ -218,118 +218,152 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
   color: #424242;
 }
 
-.content1 .menucategory {
+.detail-tab {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 300;
+}
+
+.detail-tab li {
+  display: inline-block;
+  width: 200px;
+  padding: 0 20px;
+  font-size: 1.2rem;
+  color: #353535;
+  line-height: 15px;
+}
+
+.detail-tab li:nth-child(1) {
+  border-right: 1px solid #333;
+}
+
+.detail-tab li.active {
+  font-weight: 600;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 15px;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #353535;
+}
+
+.tab-content1 {
+  display: none;
   width: 80%;
   margin: 0 auto;
   text-align: center;
 }
 
-.content1 .menucategory li {
-  display: inline-block;
-  line-height: 14px;
-  color: #4e4e4e;
-  font-weight: 100;
-  border-left: 1px solid #989898;
+.tab-content1 p {
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
-.content1 .menucategory li:first-child {
-  border-left: 0;
-}
-
-.content1 .menucategory li a {
-  color: #4e4e4e;
-  padding: 25px;
-}
-
-.invisible {
-  display: none;
-}
-
-.product-listmenus {
-  text-align: right;
-  width: 80%;
-  margin: 0 auto 15px;
-}
-
-.product-listmenus li {
-  display: inline-block;
-  font-size: 11px;
-  color: #c9c9c9;
-  padding: 3px 10px;
-}
-
-.prd-list {
-  width: 80%;
-  margin: 0 auto;
+.box-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: normal;
-      -ms-flex-pack: normal;
-          justify-content: normal;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  margin: 60px 0 80px;
 }
 
-.prd-list li {
-  width: calc(100%/4);
-  padding: 20px;
-  height: 600px;
+.box-wrap .box-left, .box-wrap .box-right {
+  width: 45%;
 }
 
-.prd-list li figure {
-  width: 100%;
-}
-
-.prd-list li figure img {
+.box-wrap figure img {
   width: 100%;
   height: 100%;
 }
 
-.prd-list li figure p {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.prd-list li figure p .heart-icon {
-  padding: 8px 12px;
-}
-
-.prd-list li figure p .heart-icon i {
-  color: red;
-}
-
-.prd-list li figure p span {
-  font-weight: 400;
-}
-
-.prd-list li figure .name-title {
-  color: #555;
+.box-wrap .txt-box {
+  padding: 7%;
+  text-align: left;
   font-weight: 300;
+}
+
+.box-wrap .txt-box h4 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  margin-bottom: 40px;
+}
+
+.box-wrap .txt-box p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.tab-content2 {
+  display: none;
+  width: 80%;
+  margin: 0 auto;
   text-align: center;
+  color: #353535;
 }
 
-.prd-list li figure .name-title p {
-  margin: 0 0 10px 0;
-  font-size: 12px;
-}
-
-.prd-list li figure .name-title strong {
+.tab-content2 span {
   display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.tab-content2 p {
+  font-size: 1.8rem;
+  letter-spacing: 1.8px;
+}
+
+.tab-content2 .brand-textbox {
+  margin: 30px;
+  font-size: 1.2rem;
+}
+
+.active {
+  display: block;
+}
+
+.mySwiper2 {
+  height: 80%;
+  width: 80%;
+}
+
+.mySwiper {
+  width: 80%;
+  height: 20%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
   width: 100%;
-  text-align: center;
-  color: #000;
-  font-weight: 800;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.prd-list li figure .name-title span:nth-of-type(2) {
-  font-size: 12px;
+.swiper-wrap {
+  padding: 3% 10%;
 }
-
-.prd-list li:nth-of-type(4), .prd-list li:nth-of-type(8) {
-  margin-right: 0;
-}
-/*# sourceMappingURL=sub-1.css.map */
+/*# sourceMappingURL=about.css.map */

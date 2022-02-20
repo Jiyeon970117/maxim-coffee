@@ -63,7 +63,5 @@ function init(){
     ProductList.innerHTML = TagList;
 
   }
-  
-
 }
 window.onload = init;

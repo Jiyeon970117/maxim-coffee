@@ -1,7 +1,7 @@
 {
   "list":[
     {
-        "img":"./img/sub-coffee-1-1.jpg",
+        "img":["./img/sub-coffee-1-1.jpg", "./img/sub-coffee-1.jpg", "./img/sub-coffee-1-3.jpg"],
         "name":"[머그컵 무료 증정]Deep Dive 200g | 딥 다이브(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"17,000원",
@@ -11,7 +11,7 @@
         "number": "1"
     },
     {
-        "img":"./img/sub-coffee-2-2.jpg",
+        "img":["./img/sub-coffee-2-2.jpg", "./img/sub-coffee-2.png", "./img/sub-coffee-2-3.jpg"],
         "name":"[머그컵 무료 증정]Light Roast 200g | 라이트 로스트(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"22,000원",
@@ -21,7 +21,7 @@
         "number": "2"
     },
     {
-        "img":"./img/sub-coffee-3-3.jpg",
+        "img":["./img/sub-coffee-3-3.jpg", "./img/sub-coffee-3.png", "./img/sub-coffee-3-2.jpg"],
         "name":"[머그컵 무료 증정]Golden Sky 200g | 골든 스카이(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"17,000원",
@@ -31,7 +31,7 @@
         "number": "3"
     },
     {
-        "img":"./img/sub-coffee-4-4.jpg",
+        "img":["./img/sub-coffee-4-4.jpg", "./img/sub-coffee-4.png", "./img/sub-coffee-4-3.jpg"],
         "name":"[머그컵 무료 증정]Brazil 200g | 브라질(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"18,000원",
@@ -41,7 +41,7 @@
         "number": "4"
     },
     {
-        "img":"./img/sub-coffee-5-5.jpg",
+        "img":["./img/sub-coffee-5-5.jpg", "./img/sub-coffee-5.png", "./img/sub-coffee-6-3.jpg"],
         "name":"[머그컵 무료 증정]Ethiopia 200g | 에티오피아(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"22,000원",
@@ -51,7 +51,7 @@
         "number": "5"
     },
     {
-        "img":"./img/sub-coffee-6-6.jpg",
+        "img":["./img/sub-coffee-6-6.jpg", "./img/sub-coffee-6.png", "./img/sub-coffee-6-3.jpg"],
         "name":"[머그컵 무료 증정]Colombia 200g | 콜롬비아(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"20,000원",
@@ -61,7 +61,7 @@
         "number": "6"
     },
     {
-        "img":"./img/sub-coffee-7-7.jpg",
+        "img":["./img/sub-coffee-7-7.jpg", "./img/sub-coffee-7-1.jpg", "./img/sub-coffee-7-3.jpg"],
         "name":"[머그컵 무료 증정]Kenya 200g | 케냐(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"22,000원",
@@ -71,7 +71,7 @@
         "number": "7"
     },
     {
-        "img":"./img/sub-coffee-8-8.jpg",
+        "img":["./img/sub-coffee-8-8.jpg", "./img/sub-coffee-8-1.jpg", "./img/sub-coffee-8-3.jpg"],
         "name":"[머그컵 무료 증정]Dark Roast 200g | 다크로스트(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"22,000원",
@@ -81,7 +81,7 @@
         "number": "8"
     },
     {
-        "img":"./img/sub-coffee-9-9.jpg",
+        "img":["./img/sub-coffee-9-9.jpg", "./img/sub-coffee-9-1.jpg","./img/sub-coffee-9-3.jpg"],
         "name":"[머그컵 무료 증정]Papua New Guinea 200g | 파푸아뉴기니(~2/28)",
         "tit":"2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다",
         "price":"20,000원",
@@ -94,74 +94,84 @@
 
 "items": [
   {
-    "img":"./img/sub-goods-1.jpg",
+    "img":["./img/sub-goods-1.jpg", "./img/sub-goods-1-1.jpg", "./img/sub-goods-1-2.jpg"],
     "name":"Masking Tape | 마스킹테이프",
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 그래픽화, 커피 향미와 인용구를 레터링으로 <br> 디자인한 종이 소재의 마스킹테이프",
-    "type": "goods"
+    "type": "goods",
+    "number": "1"
   },
   {
-    "img":"./img/sub-goods-2.jpg",
+    "img":["./img/sub-goods-2.jpg", "./img/sub-goods-2-1.jpg", "./img/sub-goods-2-2.jpg"],
     "name":"Memo Cube | 메모 큐브",
     "price":"7,000원",
     "info":"MAXIM 영문 레터링 디자인으로 표현한  <br> 700매의 대용량 포스트잇 제품의 메모큐브",
-    "type": "goods"
+    "type": "goods",
+    "number": "2"
   },
   {
-    "img":"./img/sub-goods-3.jpg",
+    "img":["./img/sub-goods-3.jpg", "./img/sub-goods-3-1.jpg", "./img/sub-goods-3-2.jpg"],
     "name":"Mini Bookmark | 미니 북마크",
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 9개의 금속 심볼로 그래픽화한 <br> 금속 소재의 미니 북마크 세트",
-    "type": "goods"
+    "type": "goods",
+    "number": "3"
   },
   {
-    "img":"./img/sub-goods-4.jpg",
+    "img":["./img/sub-goods-4.jpg", "./img/sub-goods-4-1.jpg", "./img/sub-goods-4-2.jpg"],
     "name":"Mug (Symbol) | 머그 (심볼)",
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 그래픽화한 <br> 화이트 세라믹 소재의 심플 머그",
-    "type": "goods"
+    "type": "goods",
+    "number": "4"
   },
   {
-    "img":"./img/sub-goods-5.jpg",
+    "img":["./img/sub-goods-5.jpg", "./img/sub-goods-5-1.jpg", "./img/sub-goods-5-2.jpg"],
     "name":"Mug (Red) | 머그 (레드)",
     "price":"7,000원",
     "info":"레터링 디자인으로 표현한 <br> 화이트 세라믹 소재의 심플 머그",
-    "type": "goods"
+    "type": "goods",
+    "number": "5"
   },
   {
-    "img":"./img/sub-goods-6.jpg",
+    "img":["./img/sub-goods-6.jpg", "./img/sub-goods-6-1.jpg", "./img/sub-goods-6-2.jpg"],
     "name":"Mug (Red) | 머그 (그린)",
     "price":"7,000원",
     "info":"레터링 디자인으로 표현한 <br> 화이트 세라믹 소재의 심플 머그",
-    "type": "goods"
+    "type": "goods",
+    "number": "6"
   },
   {
-    "img":"./img/sub-goods-7.jpg",
+    "img":["./img/sub-goods-7.jpg", "./img/sub-goods-7-1.jpg", "./img/sub-goods-7-2.jpg"],
     "name":"Tumbler (White) | 텀블러 (화이트)",
     "price":"7,000원",
     "info":"스페셜티 커피를 평가하는 Coffee Tasting Form을 그래픽화한 <br> 이중 스테인레스 스틸 소재의 텀블러",
-    "type": "goods"
+    "type": "goods",
+    "number": "7"
   },
   {
-    "img":"./img/sub-goods-8.jpg",
+    "img":["./img/sub-goods-9.jpg", "./img/sub-goods-8-1.jpg", "./img/sub-goods-8-2.jpg"],
     "name":"Tumbler (White) | 텀블러 (블랙)",
     "price":"7,000원",
     "info":"스페셜티 커피를 평가하는 Coffee Tasting Form을 그래픽화한 <br> 이중 스테인레스 스틸 소재의 텀블러",
-    "type": "goods"
+    "type": "goods",
+    "number": "8"
   },
   {
-    "img":"./img/sub-goods-9.jpg",
+    "img":["./img/sub-goods-8.jpg", "./img/sub-goods-9-1.jpg", "./img/sub-goods-9-2.jpg"],
     "name":"Pouch (Yellow) | 파우치 (옐로우)",
     "price":"7,000원",
     "info":"시그니처 블렌드 [Golden Sky]를 그래픽화한 <br> 화이트 세라믹 소재의 심플 머그",
-    "type": "goods"
+    "type": "goods",
+    "number": "9"
   },
   {
-    "img":"./img/sub-goods-10.jpg",
+    "img":["./img/sub-goods-10.jpg", "./img/sub-goods-10-1.jpg", "./img/sub-goods-10-2.jpg"],
     "name":"Pouch (Yellow) | 파우치 (블루)",
     "price":"7,000원",
     "info":"시그니처 블렌드 [Golden Sky]를 그래픽화한 <br> 내추럴 무드의 친환경 타이백 소재의 파우치",
-    "type": "goods"
+    "type": "goods",
+    "number": "10"
   }
 ]
 }

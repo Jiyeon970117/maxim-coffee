@@ -1,7 +1,13 @@
 'use strict';
 
 const Word = document.querySelector('#word');
+const $Body = document.querySelector('body');
+const $Popup = document.querySelector('.popup');
 let $newWord;
+let Cart = [];
+
+import PopupHtmlString from "./popupcreate.js";
+
 function init(){
 
 
@@ -12,20 +18,21 @@ function init(){
   }
 
   function createItem(list){
-    const Lists = document.querySelector('.prd-list')
-    Lists.innerHTML = list.map( (item) => createHtmlString(item)).join('');
+    const Lists = document.querySelector('.prd-list');
+    Lists.innerHTML = list.map( (item, i) => createHtmlString(item, i)).join('');
   }
 
-  function createHtmlString(item){
+
+  function createHtmlString(item, i){
     return `            
-          <li>
+          <li class="${i + 1}">
             <figure>
-              <img src=${item.img}>
+              <img src=${item.img[0]}>
               <p>
                 <span class="heart-icon">
-                  <i class="far fa-heart ${item.number}"></i>
+                  <i data-icon="${i + 1}"  class="far fa-heart heart ${i + 1}"></i>
                 </span>
-                <span>
+                <span class="cart">
                   <i class="fas fa-shopping-cart"></i>
                 </span>
               </p>
@@ -40,7 +47,6 @@ function init(){
           </li>
           `;
   }
-  
   
 
   //banner 바꾸기
@@ -66,7 +72,7 @@ function init(){
   function UpdateItem(list,key,value){
     const PrdList = document.querySelectorAll('.prd-list li');
     list.forEach( (item, index) => {
-      console.log(item)
+      // console.log(item)
       if(item[key] === value){
         PrdList[index].classList.remove('invisible')
         WordChange(value)
@@ -76,7 +82,6 @@ function init(){
     });
   }
 
-  let Cart = [];
 
   //localstorage-setItem
   function setLocalsStorage(){
@@ -89,8 +94,7 @@ function init(){
   //JSON.parse
   if(savedCart !== null){
     const ParsedCart = JSON.parse(savedCart);
-    console.log(ParsedCart)
-    ParsedCart.forEach(Basket)
+    // console.log(ParsedCart)
   }
 
 
@@ -110,39 +114,42 @@ function init(){
     menuCount.innerText = `(${$Count})`;
   }
 
-  function Basket(item){
-    const FIcon = document.querySelectorAll('.fa-heart')
-    // console.log(FIcon)
-    // const FIcon = e.target.closest('i')
-    // console.log(typeof item)
-    // console.log(FIcon)
-    // FIcon.className = item
-    // if(FIcon == null){
-    //   return
-    // }else if(FIcon.classList.contains('far')){
-    //   FIcon.classList.replace('far', 'fas');
-    //   // FIcon.setAttribute('class', 'fas fa-heart');
-    //   CountUp()
-    //   alert('장바구니에 추가됐습니다.')
-    //   return
-    // }
-    // confirm('취소하시겠습니까?') ? 
-    // ( CountDown(), FIcon.classList.replace('fas', 'fas') ) 
-    // : FIcon.classList.replace('far', 'fas') ;     
-  }
-
   //위시리스트
   function Wishlist(e){
-    const FIcon = e.target.closest('i')
-    const List = FIcon.className;
-    Cart.push(List)
-    setLocalsStorage()
-    Basket()
+    const FIcon = e.target.parentNode.closest('span');
+    const List = e.target.closest('i');
+    const ListId = e.target.closest('i').dataset.icon;
+    console.log(ListId)
+    if( FIcon == null){ return }
+    if(List.classList.contains('far')){
+      alert('장바구니에 추가됐습니다.')
+      List.classList.replace('far', 'fas');
+      Cart.push({ heart : List.className})
+      // Cart.push({ heart : List.className})
+      console.log(Cart["heart"])
+      setLocalsStorage()
+      CountUp()
+      return
+    }
+    if(confirm('취소하시겠습니까?') ){
+      CountDown()
+      List.classList.replace('fas', 'far')
+      if(ListId === List.dataset.icon){ 
+        Cart.splice(List.className, 1)
+        setLocalsStorage()
+        console.log(Cart)
+      }
+      // setLocalsStorage()
+    }
+    else{
+      List.classList.replace('far', 'fas')
+    }
+
+    // // const List = e.target.parentNode.closest('li').className;
     // if(FIcon == null){
     //   return
     // }else if(FIcon.classList.contains('far')){
     //   FIcon.classList.replace('far', 'fas');
-    //   // FIcon.setAttribute('class', 'fas fa-heart');
     //   CountUp()
     //   alert('장바구니에 추가됐습니다.')
     //   return
@@ -152,13 +159,43 @@ function init(){
     // : FIcon.classList.replace('far', 'fas') ;     
   }
 
+
+
+  //Close
+  function Close(){
+    $Popup.style = 'display: none';
+    $Body.style = 'overflow: visible';
+  }
+
+  //Detail
+  function Detail(e){
+    const $Detail = document.querySelector('.detail img')
+    let ImgBtn = e.target.getAttribute('src')
+    $Detail.setAttribute('src', ImgBtn)
+  }
+
+
+  //Popup
+  function Popup(e, list){
+    const $Li = e.target.closest('li').className;
+    const $MOdal = document.querySelector('.modal');
+    $MOdal.innerHTML = PopupHtmlString( list.find( (item) => item.number === $Li));
+    $Popup.style = 'display: flex; position: fixed';
+    $Body.style = 'overflow: hidden';
+    Detail(e, list)
+  }
+
+  $Popup.addEventListener( 'click', (e) => e.target.closest('img') ? Detail(e) :  Close() )
+
+
   function setEventListeners(list){
     const MenuBtns = document.querySelector('.menucategory');
     const Lists = document.querySelector('.prd-list');
     MenuBtns.addEventListener('click', (e) => onBtnClick(e, list));
-    Lists.addEventListener('click', (e) => Wishlist(e));
+    Lists.addEventListener('click', (e) => {
+      e.target.closest('img') ? Popup(e, list): Wishlist(e, list);
+    });
   }
-
   
 
 
@@ -166,23 +203,10 @@ function init(){
   .then( (list) => {
     createItem(list)
     setEventListeners(list)
+    // heartChange()
   })
   .catch(console.log);
 
 
 }
 window.onload = init;
-
-  // function Basket(e, List, FIcon){
-  //   if(FIcon == null){
-  //     return
-  //   }else if(FIcon.classList.contains('far')){
-  //     FIcon.setAttribute('class', 'fas fa-heart');
-  //     CountUp()
-  //     alert('장바구니에 추가됐습니다.')
-  //     return
-  //   }
-  //   confirm('취소하시겠습니까?') ? 
-  //   ( CountDown(), FIcon.setAttribute('class', 'far fa-heart') ) 
-  //   : FIcon.setAttribute('class', 'fas fa-heart') ;     
-  // }

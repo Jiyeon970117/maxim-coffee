@@ -1,0 +1,162 @@
+@import './common.scss';
+.content1{
+  .category{
+    margin-top: 80px;
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 100px;
+    ul{
+      width: 30%;
+      margin: 0 auto;
+      @include flexbox(space-between);
+      li{
+        font-weight: 100;
+        a{
+          display: block;
+          padding: 15px 20px;
+        }
+      }
+    }
+  }
+  .menu-categorybox{
+    margin-bottom: 80px;
+  }
+  .banner{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #424242;
+  }
+}
+.detail-tab{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 300;
+  li{
+    display: inline-block;
+    width: 200px;
+    padding: 0 20px;
+    font-size: 1.2rem;
+    color: #353535;
+    line-height: 15px;
+    &:nth-child(1){
+      border-right: 1px solid #333;
+    }
+    &.active{
+      font-weight: 600;
+    }
+  }
+}
+
+h2{
+  font-family: $font-con;
+  margin-bottom: 15px;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #353535;
+}
+
+.tab-content1{
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  p{
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
+
+.box-wrap{
+  @include flexbox(center,normal);
+  margin: 60px 0 80px;
+  .box-left, .box-right{width: 45%;}
+  figure{
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .txt-box{
+    padding: 7%;
+    text-align: left;
+    font-weight: 300;
+    h4{
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      margin-bottom: 40px;
+    }
+    p{
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+  }
+
+}
+
+.tab-content2{
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: #353535;
+  span{
+    display: inline-block;
+    font-family: $font-con;
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  p{
+    font-size: 1.8rem;
+    letter-spacing: 1.8px;
+    // color: #353535;
+  }
+  .brand-textbox{
+    margin: 30px;
+    font-size: 1.2rem;
+  }
+}
+
+
+//클릭 이벤트
+.active{
+  display: block;
+}
+
+
+// swiper css
+.mySwiper2 {
+  height: 80%;
+  width: 80%;
+}
+
+.mySwiper {
+  width: 80%;
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-wrap{
+  padding: 3% 10%;
+}
