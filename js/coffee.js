@@ -4,7 +4,6 @@ const Word = document.querySelector('#word');
 const $Body = document.querySelector('body');
 const $Popup = document.querySelector('.popup');
 let $newWord;
-let Cart = [];
 
 import PopupHtmlString from "./popupcreate.js";
 
@@ -15,6 +14,21 @@ function init(){
     return fetch('js/data.json')
           .then( (res) => res.json() )
           .then( (json) => json.list );
+  }
+
+  let Cart = [];
+
+  function render(list){
+    // list.forEach( (item) => console.log(item.img))
+    //JSON.parse
+    if(savedCart !== null){
+      const ParsedCart = JSON.parse(savedCart);
+      console.log(ParsedCart)
+      Cart = ParsedCart
+      createItem(ParsedCart)
+      return
+    }
+    createItem(list);
   }
 
   function createItem(list){
@@ -30,7 +44,7 @@ function init(){
               <img src=${item.img[0]}>
               <p>
                 <span class="heart-icon">
-                  <i data-icon="${i + 1}"  class="far fa-heart heart ${i + 1}"></i>
+                  <i data-icon="${i}"  class="${item.heart ? 'fas fa-heart': 'far fa-heart'} ${i}"></i>
                 </span>
                 <span class="cart">
                   <i class="fas fa-shopping-cart"></i>
@@ -72,7 +86,8 @@ function init(){
   function UpdateItem(list,key,value){
     const PrdList = document.querySelectorAll('.prd-list li');
     list.forEach( (item, index) => {
-      // console.log(item)
+      // console.log(list)
+      console.log(item.name)
       if(item[key] === value){
         PrdList[index].classList.remove('invisible')
         WordChange(value)
@@ -91,11 +106,6 @@ function init(){
   // localstorage-getItem
   const savedCart = localStorage.getItem('list');
 
-  //JSON.parse
-  if(savedCart !== null){
-    const ParsedCart = JSON.parse(savedCart);
-    // console.log(ParsedCart)
-  }
 
 
   let $Count = 0;
@@ -114,32 +124,41 @@ function init(){
     menuCount.innerText = `(${$Count})`;
   }
 
+
   //위시리스트
-  function Wishlist(e){
+  function Wishlist(e, list){
     const FIcon = e.target.parentNode.closest('span');
     const List = e.target.closest('i');
     const ListId = e.target.closest('i').dataset.icon;
-    console.log(ListId)
+    // const $LiId = e.target.closest('').dataset.icon;
+    Cart = list
     if( FIcon == null){ return }
     if(List.classList.contains('far')){
       alert('장바구니에 추가됐습니다.')
-      List.classList.replace('far', 'fas');
-      Cart.push({ heart : List.className})
+      console.log(Cart)
+      // List.classList.replace('far', 'fas');
+      Cart[ListId].heart = true;
+      // const result = list.filter( (item) => item.heart == true)
+      // console.log(result)
+      // Cart.push({heart: List.className})
       // Cart.push({ heart : List.className})
-      console.log(Cart["heart"])
       setLocalsStorage()
-      CountUp()
+      // render(list)
+      createItem(Cart)
+      // CountUp()
       return
     }
     if(confirm('취소하시겠습니까?') ){
       CountDown()
-      List.classList.replace('fas', 'far')
-      if(ListId === List.dataset.icon){ 
-        Cart.splice(List.className, 1)
-        setLocalsStorage()
-        console.log(Cart)
+      list[ListId].heart = false;
+      // List.classList.replace('fas', 'far')
+      if(ListId === List.dataset.icon){
+        const result = list.findIndex( (item) => item.heart == false)
+        list.splice(ListId, 1)
+        console.log(list[result].heart)
+        // setLocalsStorage()
+        // createItem(list)
       }
-      // setLocalsStorage()
     }
     else{
       List.classList.replace('far', 'fas')
@@ -193,7 +212,8 @@ function init(){
     const Lists = document.querySelector('.prd-list');
     MenuBtns.addEventListener('click', (e) => onBtnClick(e, list));
     Lists.addEventListener('click', (e) => {
-      e.target.closest('img') ? Popup(e, list): Wishlist(e, list);
+      e.target.closest('img') ? Popup(e, list): '';
+      e.target.parentNode.classList.contains('heart-icon') ? Wishlist(e, list) :'';
     });
   }
   
@@ -201,7 +221,8 @@ function init(){
 
   loadItems()
   .then( (list) => {
-    createItem(list)
+    render(list)
+    // createItem(list)
     setEventListeners(list)
     // heartChange()
   })
@@ -210,3 +231,6 @@ function init(){
 
 }
 window.onload = init;
+
+
+{/* <i data-icon="${i + 1}"  class="far fa-heart heart ${i + 1}"></i> */}
