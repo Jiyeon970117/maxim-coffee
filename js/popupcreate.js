@@ -82,18 +82,18 @@ function PopupHtmlString(item){
                 </table>
                 <div class="product-btns">
                   <div>
-                    <a href="#">
+                    <a class="popup-buy" href="cart.html">
                       바로구매하기
                     </a>
                   </div>
                   <div>
-                    <a href="#">
+                    <a class="popup-cart" href="#">
                       <i class="fas fa-shopping-cart"></i>
                     </a>
                   </div>
                   <div>
-                    <a href="#">
-                      <i class="far fa-heart"></i>
+                    <a class="popup-heart" data-id="${item.number}" href="#">
+                      <i id=${item.number} class="${item.heart ? 'fas fa-heart': 'far fa-heart'}"></i>
                     </a>
                   </div>
                 </div>

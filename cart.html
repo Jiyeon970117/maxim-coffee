@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortouch-icon" sizes="180x180" href="./img/logo-favicon.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+  <link rel="manifest" href="./img/site.webmanifest">
+  <link rel="mask-icon" href="./img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#5c687a">
+  <title>맥심 커피 공장</title>
+  <script defer src="https://kit.fontawesome.com/bf0adeb074.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/cart.css">
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
+  <script src="./js/slick.min.js"></script>
+  <script defer src="./js/common.js"></script>
+  <script type="module" defer src="./js/cart.js"></script>
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <div class="wrap">
+      <div class="wishlist">
+        <h2>위시리스트</h2>
+        <ul class="row head">
+          <li class="H-check">선택</li>
+          <li class="H-img">이미지</li>
+          <li class="H-name">상품명</li>
+          <li class="H-price">가격</li>
+          <li class="H-num">수량</li>
+          <li class="H-sum">합계</li>
+          <li class="H-option">옵션</li>
+        </ul>
+        <div class="list-body">
+          <!-- <ul class="row list">
+            <li class="B-check">
+              <input type="checkbox" name="checkbox" checked="">
+            </li>
+            <li class="B-img">
+              <figure>
+                <img src="./img/sub-coffee-1.jpg" alt="">
+              </figure>
+            </li>
+            <li class="B-name">
+              <span>상품명</span>
+            </li>
+            <li class="B-price">
+              20,000원
+            </li>
+            <li class="B-num">
+              <div>
+                <span class="sum down 1"><i class="fas fa-arrow-alt-circle-down"></i></span>
+                <input data-input="1" id="1" type="text" value="1">
+                <span class="sum up 1"><i class="fas fa-arrow-alt-circle-up"></i></span>
+              </div>
+            </li>
+            <li class="B-sum">
+              20,000원
+            </li>
+            <li class="B-option">
+              <span class="cart-icon cart">
+                <i class="fas fa-shopping-cart"></i>
+              </span>
+              <span class="cart-icon trash">
+                <i class="fas fa-trash"></i>
+              </span>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+
+      <div class="basket">
+        <h2>장바구니</h2>
+        <ul class="row head">
+          <li class="H-check">선택</li>
+          <li class="H-img">이미지</li>
+          <li class="H-name">상품명</li>
+          <li class="H-price">가격</li>
+          <li class="H-num">수량</li>
+          <li class="H-sum">합계</li>
+          <li class="H-option">옵션</li>
+        </ul>
+        <div class="cart-body">
+          <!-- <ul class="row list">
+            <li class="B-check">
+              <input type="checkbox" name="checkbox" checked="">
+            </li>
+            <li class="B-img">
+              <figure>
+                <img src="./img/sub-coffee-1.jpg" alt="">
+              </figure>
+            </li>
+            <li class="B-name">
+              <span>상품명</span>
+            </li>
+            <li class="B-price">
+              20,000원
+            </li>
+            <li class="B-num">
+              <div>
+                <span class="sum down 2"><i class="fas fa-arrow-alt-circle-down"></i></span>
+                <input data-input="2" id="2" type="text" value="1">
+                <span class="sum up 2"><i class="fas fa-arrow-alt-circle-up"></i></span>
+              </div>
+            </li>
+            <li class="B-sum">
+              20,000원
+            </li>
+            <li class="B-option">
+              <span class="cart-icon trash">
+                <i class="fas fa-trash"></i>
+              </span>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+
+      <!-- 전체상품 합계 정보 -->
+      <div class="total-box">
+        <div class="sumcount" id="sum_num">상품갯수: 0개</div>
+        <div class="summoney" id="sum_price">합계금액: 0원</div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
