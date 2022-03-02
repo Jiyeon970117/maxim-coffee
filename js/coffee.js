@@ -66,7 +66,6 @@ function init(){
   function UpdateItem(list,key,value){
     const PrdList = document.querySelectorAll('.prd-list li');
     list.forEach( (item, index) => {
-      // console.log(list)
       console.log(item.name)
       if(item[key] === value){
         PrdList[index].classList.remove('invisible')
@@ -94,40 +93,33 @@ function init(){
   //CountUp함수
   function CountUp(){
     const menuCount = document.querySelector('.menu-count');
+    const savedCart = localStorage.getItem('cart');
     if(Cart.length){
-      $Count ++;
+      $Count = JSON.parse(savedCart).length;
     }
     menuCount.innerText = `(${$Count})`;
   }
 
-  //CountDown함수
-  function CountDown(){
-    const menuCount = document.querySelector('.menu-count');
-    $Count --;
-    menuCount.innerText = `(${$Count})`;
-  }
 
 
   //카드담기
   function CartBox(e, list){
-    // console.log(e.target.closest('i').dataset.icon)
-    alert('장바구니에 추가됐습니다')
-    const result = list.find( (item) => item.number === e.target.closest('i').dataset.icon)
-    Cart.push(result)
+    const ListId = e.target.closest('i').dataset.icon;
+    alert('장바구니에 추가됐습니다');
+    const Product = list.find( (item) => item.number === e.target.closest('i').dataset.icon)
+    // console.log(Product)
+    Cart.push(Product)
     localStorage.setItem('cart', JSON.stringify(Cart))
     CountUp()
   }
 
-  //위시리스트
+  // //위시리스트
   function Wishlist(e, list){
-    if(listBox.length === 0){
-      return listBox = Object.assign(list)
-    }
-    
-    const FIcon = e.target.parentNode.closest('span');
+    // if(e.target.contains('span')) return
     const List = e.target.closest('i');
     const ListId = e.target.closest('i').dataset.icon;
-    if( FIcon == null){ return }
+    if(listBox.length === 0) listBox = Object.assign(list);
+    if(ListId == null) return
     if(List.classList.contains('far')){
       alert('위시리스트에 추가됐습니다.');
       List.classList.replace('far', 'fas');
@@ -136,7 +128,6 @@ function init(){
       return
     }
     if(confirm('취소하시겠습니까?') ){
-      CountDown()
       List.classList.replace('fas', 'far')
       listBox[ListId].heart = false;
       if(ListId === List.dataset.icon){
@@ -148,43 +139,13 @@ function init(){
     else{
       List.classList.replace('far', 'fas')
     }
-
   }
-
 
 
   //팝업 닫기
   function Close(){
     $Popup.style = 'display: none';
     $Body.style = 'overflow: visible';
-  }
-
-  //팝업 위시리스트
-  function buy(e){
-    const btnName = e.target;
-    const List = e.target.closest('a').children[0];
-    const ListId = e.target.closest('a').dataset.id;
-
-    if(btnName.classList.contains('popup-heart')){
-      if(List.classList.contains('far')){
-        alert('위시리스트에 추가됐습니다.');
-        List.classList.replace('far', 'fas');
-        listBox[ListId].heart = true;
-        setLocalsStorage()
-        createItem(listBox)
-        return
-      }
-      if(confirm('취소하시겠습니까?') ){
-        List.classList.replace('fas', 'far')
-        listBox[ListId].heart = false;
-        if(ListId === List.id){
-          const result = listBox.find( (item) => item.number === ListId )
-          listBox.splice(ListId, 1, result)
-          setLocalsStorage()
-          createItem(listBox)
-        }
-      }
-    }
   }
 
   //디테일
@@ -198,13 +159,17 @@ function init(){
   //팝업
   function Popup(e, list){
     const $Li = e.target.closest('li').className;
-    console.log($Li)
     const $MOdal = document.querySelector('.modal');
     listBox.length === 0 ? listBox = Object.assign(list) : '';
     $MOdal.innerHTML = PopupHtmlString( listBox.find( (item) => item.number === $Li));
-    const productBtn = document.querySelector('.product-btns'); 
+    const productBtn = document.querySelector('.product-btns');
     const detailImg = document.querySelector('.img-list');
-    productBtn.addEventListener('click', (e) => buy(e));
+    productBtn.addEventListener('click', (e) => {
+      if(e.target.classList.contains('fa-heart')){
+        Wishlist(e, list);
+        createItem(listBox);
+      }else if(e.target.classList.contains('fa-shopping-cart'))return CartBox(e, list)
+    });
     detailImg.addEventListener('click', (e) => Detail(e))
     $Popup.style = 'display: flex; position: fixed';
     $Body.style = 'overflow: hidden';
@@ -212,6 +177,7 @@ function init(){
 
   //팝업 닫기 이벤트
   $Close.addEventListener( 'click', Close)
+
 
 
   function setEventListeners(list){

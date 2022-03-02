@@ -99,7 +99,7 @@
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 그래픽화, 커피 향미와 인용구를 레터링으로 <br> 디자인한 종이 소재의 마스킹테이프",
     "type": "goods",
-    "number": "1"
+    "number": "0"
   },
   {
     "img":["./img/sub-goods-2.jpg", "./img/sub-goods-2-1.jpg", "./img/sub-goods-2-2.jpg"],
@@ -107,7 +107,7 @@
     "price":"7,000원",
     "info":"MAXIM 영문 레터링 디자인으로 표현한  <br> 700매의 대용량 포스트잇 제품의 메모큐브",
     "type": "goods",
-    "number": "2"
+    "number": "1"
   },
   {
     "img":["./img/sub-goods-3.jpg", "./img/sub-goods-3-1.jpg", "./img/sub-goods-3-2.jpg"],
@@ -115,7 +115,7 @@
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 9개의 금속 심볼로 그래픽화한 <br> 금속 소재의 미니 북마크 세트",
     "type": "goods",
-    "number": "3"
+    "number": "2"
   },
   {
     "img":["./img/sub-goods-4.jpg", "./img/sub-goods-4-1.jpg", "./img/sub-goods-4-2.jpg"],
@@ -123,7 +123,7 @@
     "price":"7,000원",
     "info":"맥심 커피 생산 공정을 그래픽화한 <br> 화이트 세라믹 소재의 심플 머그",
     "type": "goods",
-    "number": "4"
+    "number": "3"
   },
   {
     "img":["./img/sub-goods-5.jpg", "./img/sub-goods-5-1.jpg", "./img/sub-goods-5-2.jpg"],
@@ -131,7 +131,7 @@
     "price":"7,000원",
     "info":"레터링 디자인으로 표현한 <br> 화이트 세라믹 소재의 심플 머그",
     "type": "goods",
-    "number": "5"
+    "number": "4"
   },
   {
     "img":["./img/sub-goods-6.jpg", "./img/sub-goods-6-1.jpg", "./img/sub-goods-6-2.jpg"],
@@ -139,7 +139,7 @@
     "price":"7,000원",
     "info":"레터링 디자인으로 표현한 <br> 화이트 세라믹 소재의 심플 머그",
     "type": "goods",
-    "number": "6"
+    "number": "5"
   },
   {
     "img":["./img/sub-goods-7.jpg", "./img/sub-goods-7-1.jpg", "./img/sub-goods-7-2.jpg"],
@@ -147,7 +147,7 @@
     "price":"7,000원",
     "info":"스페셜티 커피를 평가하는 Coffee Tasting Form을 그래픽화한 <br> 이중 스테인레스 스틸 소재의 텀블러",
     "type": "goods",
-    "number": "7"
+    "number": "6"
   },
   {
     "img":["./img/sub-goods-9.jpg", "./img/sub-goods-8-1.jpg", "./img/sub-goods-8-2.jpg"],
@@ -155,7 +155,7 @@
     "price":"7,000원",
     "info":"스페셜티 커피를 평가하는 Coffee Tasting Form을 그래픽화한 <br> 이중 스테인레스 스틸 소재의 텀블러",
     "type": "goods",
-    "number": "8"
+    "number": "7"
   },
   {
     "img":["./img/sub-goods-8.jpg", "./img/sub-goods-9-1.jpg", "./img/sub-goods-9-2.jpg"],
@@ -163,7 +163,7 @@
     "price":"7,000원",
     "info":"시그니처 블렌드 [Golden Sky]를 그래픽화한 <br> 화이트 세라믹 소재의 심플 머그",
     "type": "goods",
-    "number": "9"
+    "number": "8"
   },
   {
     "img":["./img/sub-goods-10.jpg", "./img/sub-goods-10-1.jpg", "./img/sub-goods-10-2.jpg"],
@@ -171,7 +171,7 @@
     "price":"7,000원",
     "info":"시그니처 블렌드 [Golden Sky]를 그래픽화한 <br> 내추럴 무드의 친환경 타이백 소재의 파우치",
     "type": "goods",
-    "number": "10"
+    "number": "9"
   }
 ]
 }

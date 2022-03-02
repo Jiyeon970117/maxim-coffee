@@ -298,16 +298,13 @@ div .prd-list li figure p {
   margin: 20px 0;
 }
 
-div .prd-list li figure p .heart-icon {
-  padding: 8px 12px;
-}
-
 div .prd-list li figure p .heart-icon i {
   color: red;
 }
 
 div .prd-list li figure p span {
   font-weight: 400;
+  padding: 8px 12px;
 }
 
 div .prd-list li figure .name-title {
@@ -461,16 +458,15 @@ div .prd-list li:nth-of-type(4), div .prd-list li:nth-of-type(8) {
 .popup .modal .row1 .product-info .product-btns div a {
   display: inline-block;
   width: 150px;
-  height: 70px;
+  line-height: 70px;
   background: #fff;
-  padding: 10%;
   text-align: center;
   border: 1px solid #d1d1d1;
 }
 
 .popup .modal .row1 .product-info .product-btns div a i {
   font-size: 20px;
-  vertical-align: -webkit-baseline-middle;
+  padding: 10%;
 }
 
 .popup .modal .row1 .product-info .product-btns div a .fa-heart {

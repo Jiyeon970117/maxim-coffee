@@ -90,11 +90,11 @@ div{
           text-align: center;
           margin: 20px 0;
           .heart-icon{
-            padding: 8px 12px;
             i{ color: red;}
           }
           span{
             font-weight: 400;
+            padding: 8px 12px;
           }
         }
         .name-title{
@@ -196,14 +196,13 @@ div{
             a{
               display: inline-block;
               width: 150px;
-              height: 70px;
+              line-height: 70px;
               background: #fff;
-              padding: 10%;
               text-align: center;
               border: 1px solid #d1d1d1;
               i{
                 font-size: 20px;
-                vertical-align: -webkit-baseline-middle;
+                padding: 10%;
               }
               .fa-heart{
                 color: red;

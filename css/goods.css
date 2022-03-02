@@ -268,19 +268,16 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
 
 .Items li figure p {
   text-align: center;
-  margin: 20px 0;
-}
-
-.Items li figure p .heart-icon {
-  padding: 8px 12px;
+  margin-top: 20px;
 }
 
 .Items li figure p .heart-icon i {
   color: red;
 }
 
-.Items li figure p span {
-  font-weight: 400;
+.Items li figure p span i {
+  font-size: 1.2rem;
+  padding: 5% 3%;
 }
 
 .Items li figure .name-title {
@@ -434,16 +431,15 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
 .popup .modal .row1 .product-info .product-btns div a {
   display: inline-block;
   width: 150px;
-  height: 70px;
+  line-height: 70px;
   background: #fff;
-  padding: 10%;
   text-align: center;
   border: 1px solid #d1d1d1;
 }
 
 .popup .modal .row1 .product-info .product-btns div a i {
   font-size: 20px;
-  vertical-align: -webkit-baseline-middle;
+  padding: 10%;
 }
 
 .popup .modal .row1 .product-info .product-btns div a .fa-heart {
@@ -465,5 +461,19 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
 
 .popup .modal .row1 .product-info .product-btns div:nth-of-type(1) a:hover {
   background-color: #212121;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  color: #fff;
+}
+
+.close i {
+  font-size: 2rem;
 }
 /*# sourceMappingURL=goods.css.map */

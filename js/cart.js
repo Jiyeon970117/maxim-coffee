@@ -8,25 +8,33 @@ const List = document.querySelector('.list');
 
 //로컬스토리지
 let savedList = JSON.parse(localStorage.getItem('list'));
+let savedGoods = JSON.parse(localStorage.getItem('goods'));
 let savedCart = JSON.parse(localStorage.getItem('cart'));
-let Wishlist;
+let Wishlist ;
 
 let count = 1;
 let Change;
 function Cart(){
   // 위시리스트
   function render(){
-    savedList !== null 
-    ? (
-        Wishlist = savedList.filter((list) => list.heart === true),
-        createHtml(Lbody, Wishlist)
-      )
-    : Lbody.innerHTML = NoHtmlString('위시리스트 목록이 없습니다.');
+    if(savedList !== null && savedGoods !== null){
+      Wishlist = savedList.concat(savedGoods)
+      Wishlist = Wishlist.filter((list) => list.heart === true)
+      createHtml(Lbody, Wishlist)
+    }else if(savedList !== null){
+      Wishlist = savedList.filter((list) => list.heart === true)
+      createHtml(Lbody, Wishlist)
+    }else if(savedGoods !== null){
+      Wishlist = savedGoods.filter((list) => list.heart === true)
+      createHtml(Lbody, Wishlist)
+    }else{
+      Lbody.innerHTML = NoHtmlString('위시리스트 목록이 없습니다.');
+    }
     //카드
     savedCart !== null 
     ? ( createHtml(Cbody, savedCart), totalText() ) 
     : Cbody.innerHTML = NoHtmlString('장바구니에 담긴 항목이 없습니다.');
-    return
+    setEventListeners()
   }
   render();
   
@@ -99,26 +107,23 @@ function Cart(){
   //basket
   function Basket(){
     const Product = this.parentNode.parentNode;
+    const $Price = Product.querySelector('.B-price').innerText;
     const ProductId = Product.dataset.list;
     const checkBox = Product.querySelector('input[name="checkbox"]');
     let listCart = [];
     if(checkBox.checked){
-      Change = Wishlist.find( list => list.number == ProductId )
+      Change = Wishlist.find( list => list.number == ProductId && list.price == $Price )
       if(savedCart !== null){
         savedCart.push(Change)
         localStorage.setItem('cart', JSON.stringify(savedCart))
-        // Product.remove()
       }else if(!savedCart){
         listCart.push(Change)
         localStorage.setItem('cart', JSON.stringify(listCart));
         listCart = JSON.parse(localStorage.getItem('cart'));
         savedCart = listCart
-        // Product.remove()
       }
-      UpdateList(ProductId)
+      UpdateList(ProductId, $Price)
       render()
-      // createHtml(Cbody, savedCart)
-      // totalText()
     }else{
       alert('상품을 선택해주세요');
     }
@@ -131,26 +136,40 @@ function Cart(){
     const SumPrice = Product.parentNode.querySelectorAll('.B-sum');
     let ToCount = 0;
     let TOPrice = 0;
+    if(Product.parentNode.className == 'cart-body' && checkBox.checked){
       totalNum.forEach( (item, i) => {
-        if(checkBox.checked){
-          console.log(checkBox.checked)
           let $count = parseInt(item.getAttribute('value'));
           let $price = parseInt(SumPrice[i].innerText.replace('원', '').replace(',', ''));
           ToCount += $count;
           TOPrice += $price;
-        }  
       })
-    SumCount.innerText = `상품갯수: ${ToCount}개`;
-    totalPrice.innerText = `합계금액: ${TOPrice.toLocaleString()}원`;
+      SumCount.innerText = `상품갯수: ${ToCount}개`;
+      totalPrice.innerText = `합계금액: ${TOPrice.toLocaleString()}원`;
+    }else if(Product.parentNode.className == 'list-body') return;
+    else{
+      alert('상품을 선택해주세요')
+    }
   }
 
 
   //로컬스토리지 update
-  function UpdateList(ProductId){
-    savedList[ProductId].heart = false,
-    Change = savedList.find( list => list.number == ProductId ),
-    savedList.splice([ProductId], 1, Change),
-    localStorage.setItem('list', JSON.stringify(savedList))
+  function UpdateList(ProductId, $Price){
+    console.log( $Price)
+    Wishlist.find((list) => {
+      if(list.number == ProductId && list.price == $Price ){
+        if(list.type == 'coffee'){
+          savedList[ProductId].heart = false;
+          Change = savedList.find( list => list.number == ProductId )
+          savedList.splice([ProductId], 1, Change)
+          localStorage.setItem('list', JSON.stringify(savedList))
+        }else if(list.type == 'goods'){
+          savedGoods[ProductId].heart = false;
+          Change = savedGoods.find( list => list.number == ProductId )
+          savedGoods.splice([ProductId], 1, Change)
+          localStorage.setItem('goods', JSON.stringify(savedGoods))
+        }  
+      }
+    })
   }
 
   //선택상품 비우기
@@ -159,14 +178,16 @@ function Cart(){
     const ProductBody = this.parentNode.parentNode.parentNode;
     const ProductId = Product.dataset.list;
     const checkBox = Product.querySelector('input[name="checkbox"]');
+    const $Price = Product.querySelector('.B-price').innerText;
+
     if(checkBox.checked){
-      Product.remove()
       if(ProductBody.classList.contains('list-body')){
-        UpdateList(ProductId)
+        UpdateList(ProductId, $Price)
       }else if(ProductBody.classList.contains('cart-body')){
         savedCart = savedCart.filter( (list) => list.number !== ProductId );
         localStorage.setItem('cart', JSON.stringify(savedCart))
       }
+      render();
     }else{
       alert('상품을 선택해주세요');
     }
@@ -179,25 +200,27 @@ function Cart(){
     const Input = Product.querySelector('.B-num input');
     let Value = parseInt(Input.getAttribute('value'))
     const $price = Product.querySelector('.B-price').innerText;
-    if(this.classList.contains('up'))  Value += 1;
-    else if(this.classList.contains('down') && Value > 1)  Value -= 1;
-    Input.setAttribute('value', Value);
-    SumPrice.innerText = `${($price.replace('원', '').replace(',', '') * Value).toLocaleString()}원`
-    Recalc(Product)
+    const checkBox = Product.querySelector('input[name="checkbox"]');
+    if(checkBox.checked){
+      if(this.classList.contains('up')) Value += 1;
+      if(this.classList.contains('down') && Value > 1) Value -= 1;
+      Input.setAttribute('value', Value);
+      SumPrice.innerText = `${($price.replace('원', '').replace(',', '') * Value).toLocaleString()}원`
+      Recalc(Product)  
+      return
+    }
+    alert('상품을 선택해주세요')
   }
 
-  //Sum버튼
-  const SumBtn = document.querySelectorAll('.sum');
-  SumBtn.forEach( (sum) => sum.addEventListener('click',calculate))
+  function setEventListeners(){
+    const SumBtn = document.querySelectorAll('.sum');
+    const Trash = document.querySelectorAll('.trash');
+    const CartList = document.querySelectorAll('.cart');
 
-  //list 삭제
-  const Trash = document.querySelectorAll('.trash');
-  Trash.forEach( (list) => list.addEventListener('click', DelItem))    
-
-  //카드 담기
-  const CartList = document.querySelectorAll('.cart');
-  CartList.forEach( (list) => list.addEventListener('click', Basket))
-
+    SumBtn.forEach( (sum) => sum.addEventListener('click',calculate))
+    Trash.forEach( (list) => list.addEventListener('click', DelItem))    
+    CartList.forEach( (list) => list.addEventListener('click', Basket))
+  }
 
 }
 window.onload = Cart;

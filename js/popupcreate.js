@@ -38,7 +38,7 @@ function PopupHtmlString(item){
                       </th>
                       <td>
                         <span>
-                          2월 한달 간 원두 200g 전 제품1개 구매시 머그컵 1개(색상랜덤) 증정행사 진행 중!단, 구매 수량 상관없이 1인당 머그컵은 최대 2개 증정합니다
+                         ${item.tit ? item.tit: item.info}
                         </span>
                       </td>
                     </tr>
@@ -88,12 +88,12 @@ function PopupHtmlString(item){
                   </div>
                   <div>
                     <a class="popup-cart" href="#">
-                      <i class="fas fa-shopping-cart"></i>
+                      <i data-icon=${item.number} class="fas fa-shopping-cart"></i>
                     </a>
                   </div>
                   <div>
-                    <a class="popup-heart" data-id="${item.number}" href="#">
-                      <i id=${item.number} class="${item.heart ? 'fas fa-heart': 'far fa-heart'}"></i>
+                    <a class="popup-heart" href="#">
+                      <i data-icon="${item.number}" id=${item.number} class="${item.heart ? 'fas fa-heart': 'far fa-heart'}"></i>
                     </a>
                   </div>
                 </div>
