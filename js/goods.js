@@ -11,29 +11,38 @@ function init(){
   function loadItems(){
     return fetch('js/data.json')
           .then((res) => res.json())
-          .then( (json) => json.items);
+          .then( (json) => json.list);
   }
 
-  function render(Item){
-    const ParsedGoods = JSON.parse(localStorage.getItem('goods'));
-    const ParsedCart = JSON.parse(localStorage.getItem('cart'));
-    //JSON.parse
-    if(localStorage.getItem('goods') !== null){
-      GoodsBox = ParsedGoods;
-      Cart = ParsedCart;
-      createItem(ParsedGoods)
-      return
+  function render(list){
+    if(localStorage.getItem('list') !== null){
+      GoodsBox = JSON.parse(localStorage.getItem('list'))
+      if(localStorage.getItem('cart') !== null){
+        Cart = JSON.parse(localStorage.getItem('cart'))
+      }
     }else if(localStorage.getItem('cart') !== null){
-      Cart = ParsedCart;
+      Cart = JSON.parse(localStorage.getItem('cart'))
     }
-    createItem(Item)
+    createItem(list)
   }
 
 
-  function createItem(Item){
+  function createItem(list){
     const Items = document.querySelector('.Items');
-    Items.innerHTML = Item.map( (item, i) => createHtmlString(item, i)).join('');
+    list = list.filter( (list) => list.type === 'goods');
+    Items.innerHTML = list.map( (item, i) => createHtmlString(item, i)).join('');
+    if(GoodsBox.length > 0) return Pullheart()
   }
+
+  //꽉찬 하트
+  function Pullheart(){
+    const HeartIcon = document.querySelectorAll('.fa-heart');
+    console.log(HeartIcon)
+    HeartIcon.forEach( (icon) => {
+      if(GoodsBox.includes(icon.dataset.icon)) return icon.classList.replace('far', 'fas');
+    })
+  }
+  
 
   function createHtmlString(item, i){
     return `            
@@ -42,10 +51,10 @@ function init(){
               <img src=${item.img[0]}>
               <p>
                 <span class="heart-icon">
-                  <i data-icon="${i}" class="${item.heart ? 'fas fa-heart': 'far fa-heart'}"></i>
+                  <i data-icon="${item.number}" class="far fa-heart"></i>
                 </span>
                 <span class="cart-icon">
-                  <i data-icon="${i}" class="fas fa-shopping-cart"></i>
+                  <i data-icon="${item.number}" class="fas fa-shopping-cart"></i>
                 </span>
               </p>
               <div class="name-title">
@@ -73,42 +82,33 @@ function init(){
   
 
     //카드담기
-    function CartBox(e, Item){
-      const itemId = e.target.closest('i').dataset.icon;
+    function CartBox(e){
+      const ItemId = e.target.closest('i').dataset.icon;
       alert('장바구니에 추가됐습니다');
-      const Product = Item.find( (item) => item.number === itemId)
-      Cart.push(Product)
+      Cart.push(ItemId)
       localStorage.setItem('cart', JSON.stringify(Cart))
       CountUp()
     }
   
 
     //위시리스트
-    function Wishlist(e, Item){
-      const item = e.target.closest('i');
-      const itemId = e.target.closest('i').dataset.icon;
-      if(GoodsBox.length === 0) GoodsBox = Object.assign(Item);
-      // if(itemId == null) return
-      if(item.classList.contains('far')){
+    function Wishlist(e){
+      const Item = e.target.closest('i');
+      const ItemId = e.target.closest('i').dataset.icon;
+      if(Item.classList.contains('far')){
         alert('위시리스트에 추가됐습니다.');
-        item.classList.replace('far', 'fas');
-        GoodsBox[itemId].heart = true;
-        console.log(GoodsBox[itemId].heart)
-        localStorage.setItem('goods',JSON.stringify(GoodsBox))
+        Item.classList.replace('far', 'fas');
+        GoodsBox.push(ItemId)
+        localStorage.setItem('list',JSON.stringify(GoodsBox))
         return
       }
       if(confirm('취소하시겠습니까?') ){
-        item.classList.replace('fas', 'far')
-        GoodsBox[itemId].heart = false;
-        if(itemId === item.dataset.icon){
-          const result = GoodsBox.find( (item) => item.number === itemId )
-          GoodsBox.splice(itemId, 1, result)
-          localStorage.setItem('goods',JSON.stringify(GoodsBox))
-        }
+        Item.classList.replace('fas', 'far')
+        GoodsBox = GoodsBox.filter((item) => item !== ItemId)
+        localStorage.setItem('list',JSON.stringify(GoodsBox))
+        return
       }
-      else{
-        item.classList.replace('far', 'fas')
-      }
+      Item.classList.replace('far', 'fas')
     }
   
 
@@ -127,17 +127,19 @@ function init(){
 
   //Popup
   function Popup(e, Item){
-    const $Li = e.target.closest('li').className;
+    const ItemImg = e.target.getAttribute('src')
     const $MOdal = document.querySelector('.modal');
-    GoodsBox.length === 0 ? GoodsBox = Object.assign(Item) : '';
-    $MOdal.innerHTML = PopupHtmlString( GoodsBox.find( (item) => item.number === $Li));
+    Item = Item.filter((item) => item.type === 'goods')
+    const result = Item.find((item) => item.img[0] === ItemImg)
+    $MOdal.innerHTML = PopupHtmlString(Item.find( (item) => item.img[0] === ItemImg));
+    Pullheart();
     const productBtn = document.querySelector('.product-btns');
     const detailImg = document.querySelector('.img-list');
     productBtn.addEventListener('click', (e) => {
       if(e.target.classList.contains('fa-heart')){
-        Wishlist(e, Item);
-        createItem(GoodsBox);
-      }else if(e.target.classList.contains('fa-shopping-cart'))return CartBox(e, Item)
+        Wishlist(e);
+        render(Item);
+      }else if(e.target.classList.contains('fa-shopping-cart'))return CartBox(e)
     });
     detailImg.addEventListener('click', (e) => Detail(e))
     $Popup.style = 'display: flex; position: fixed';
@@ -159,9 +161,9 @@ function init(){
 
 
   loadItems()
-  .then( (Item) => {
-    render(Item),
-    setEventListeners(Item)
+  .then( (list) => {
+    render(list)
+    setEventListeners(list)
   })
   .catch()
 

@@ -7,7 +7,7 @@
     ul{
       width: 30%;
       margin: 0 auto;
-      @include flexbox(space-between);
+      @include flexbox(space-evenly);
       li{
         font-weight: 100;
         a{

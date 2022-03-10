@@ -9,17 +9,11 @@ let listBox = [];
 let Cart = [];
 
 
-// localstorage-getItem
-// const savedList = localStorage.getItem('list');
-// const savedCart = localStorage.getItem('cart');
-
-
-    
-
 import PopupHtmlString from "./popupcreate.js";
 import createHtmlString from "./htmlcreate.js";
 
 function init(){
+
 
   function loadItems(){
     return fetch('js/data.json')
@@ -28,35 +22,24 @@ function init(){
   }
 
   //render
-
   function render(list){
-    if(localStorage.getItem('list') !== null){
-      listBox = JSON.parse(localStorage.getItem('list'))
-      if(localStorage.getItem('cart') !== null){
-        Cart = JSON.parse(localStorage.getItem('cart'))
-      }
-    }else if(localStorage.getItem('cart') !== null){
-      Cart = JSON.parse(localStorage.getItem('cart'))
+    const ParsedList = JSON.parse(savedList);
+    const ParsedCart = JSON.parse(savedCart);
+    //JSON.parse
+    if(savedList !== null){
+      listBox = ParsedList;
+      Cart = ParsedCart;
+      createItem(ParsedList)
+      return
+    }else if(savedCart !== null){
+      Cart = ParsedCart;
     }
     createItem(list)
   }
 
-
-
   function createItem(list){
     const Lists = document.querySelector('.prd-list');
-    // Lists.innerHTML = list.map( (item, i) => createHtmlString(item, i)).join('');
-    list = list.filter( (list) => list.type === 'coffee');
-    Lists.innerHTML = list.map((item, i) => createHtmlString(item, i)).join('');
-    if(listBox.length > 0) return Pullheart()
-  }
-
-  //꽉찬 하트
-  function Pullheart(){
-    const HeartIcon = document.querySelectorAll('.fa-heart');
-    HeartIcon.forEach( (icon) => {
-      if(listBox.includes(icon.dataset.icon)) return icon.classList.replace('far', 'fas');
-    })
+    Lists.innerHTML = list.map( (item, i) => createHtmlString(item, i)).join('');
   }
 
 
@@ -71,6 +54,7 @@ function init(){
     const dataset = e.target.dataset;
     const key  = dataset.key;
     const value = dataset.value;
+
     if( key == null || value == null){
       return
     }
@@ -81,8 +65,8 @@ function init(){
   //category update
   function UpdateItem(list,key,value){
     const PrdList = document.querySelectorAll('.prd-list li');
-    list = list.filter((list) => list.type === 'coffee')
     list.forEach( (item, index) => {
+      console.log(item.name)
       if(item[key] === value){
         PrdList[index].classList.remove('invisible')
         WordChange(value)
@@ -93,13 +77,15 @@ function init(){
   }
 
 
+  //localstorage-setItem
+  function setLocalsStorage(){
+    localStorage.setItem('list', JSON.stringify(listBox))
+  }
 
+  // localstorage-getItem
+  const savedList = localStorage.getItem('list');
+  const savedCart = localStorage.getItem('cart');
 
-
-
-
-
-    
 
 
   let $Count = 0;
@@ -117,35 +103,42 @@ function init(){
 
 
   //카드담기
-  function CartBox(e){
+  function CartBox(e, list){
     const ListId = e.target.closest('i').dataset.icon;
     alert('장바구니에 추가됐습니다');
-    Cart.push(ListId)
+    const Product = list.find( (item) => item.number === e.target.closest('i').dataset.icon)
+    // console.log(Product)
+    Cart.push(Product)
     localStorage.setItem('cart', JSON.stringify(Cart))
     CountUp()
   }
 
-
   // //위시리스트
-  function Wishlist(e){
+  function Wishlist(e, list){
+    // if(e.target.contains('span')) return
     const List = e.target.closest('i');
     const ListId = e.target.closest('i').dataset.icon;
+    if(listBox.length === 0) listBox = Object.assign(list);
     if(ListId == null) return
     if(List.classList.contains('far')){
       alert('위시리스트에 추가됐습니다.');
       List.classList.replace('far', 'fas');
-      console.log(typeof listBox)
-      listBox.push(ListId)
-      localStorage.setItem('list', JSON.stringify(listBox));
+      listBox[ListId].heart = true;
+      setLocalsStorage()
       return
     }
     if(confirm('취소하시겠습니까?') ){
       List.classList.replace('fas', 'far')
-      listBox = listBox.filter((list) => list !== ListId)
-      localStorage.setItem('list', JSON.stringify(listBox));
-      return
+      listBox[ListId].heart = false;
+      if(ListId === List.dataset.icon){
+        const result = listBox.find( (item) => item.number === ListId )
+        listBox.splice(ListId, 1, result)
+        setLocalsStorage()
+      }
     }
+    else{
       List.classList.replace('far', 'fas')
+    }
   }
 
 
@@ -167,14 +160,14 @@ function init(){
   function Popup(e, list){
     const $Li = e.target.closest('li').className;
     const $MOdal = document.querySelector('.modal');
-    $MOdal.innerHTML = PopupHtmlString( list.find( (item) => item.number === $Li));
-    Pullheart()
+    listBox.length === 0 ? listBox = Object.assign(list) : '';
+    $MOdal.innerHTML = PopupHtmlString( listBox.find( (item) => item.number === $Li));
     const productBtn = document.querySelector('.product-btns');
     const detailImg = document.querySelector('.img-list');
     productBtn.addEventListener('click', (e) => {
       if(e.target.classList.contains('fa-heart')){
-        Wishlist(e);
-        render(list);
+        Wishlist(e, list);
+        createItem(listBox);
       }else if(e.target.classList.contains('fa-shopping-cart'))return CartBox(e, list)
     });
     detailImg.addEventListener('click', (e) => Detail(e))
@@ -206,5 +199,7 @@ function init(){
     setEventListeners(list)
   })
   .catch(console.log);
+
+
 }
 window.onload = init;
