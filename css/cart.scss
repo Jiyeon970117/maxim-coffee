@@ -27,24 +27,31 @@ h2{
 .row{
   @include flexbox();
   text-align: center;
-  margin-bottom: 20px;
+  padding: 20px 0;
+  // margin-bottom: 20px;
   border-bottom: 1px solid #555;
   li{
     width: calc(100% / 7);
-    line-height: 60px;
-    &:nth-child(3){width: 60%;}
+    // line-height: 60px;
+    &:nth-child(3){
+      width: 60%;
+    }
   }
+  .B-num{ min-width: 100px;}
 }
 
 
 .head{
-  margin: 15px 0;
-  background-color: #f0f0f0;
+  margin-top: 15px;
+  padding: 0;
+  // background-color: #f0f0f0;
+  background-color: #ece9e9;
   color: #555;
   border-bottom: 2px solid #555;
   li{
     line-height: 50px;
   }
+  .H-num{ min-width: 100px}
 }
 
 .B-num{
@@ -77,6 +84,10 @@ figure{
 }
 i{ font-size: 1.3rem;}
 
+
+.total-box{
+  margin-top: 40px;
+}
 //전체 상품 갯수
 
 .sumcount{
@@ -93,7 +104,8 @@ i{ font-size: 1.3rem;}
   width: 80%;
   margin: 0 auto;
   text-align: right;
-  color: #0081ff;
+  color: #333;
+  // color: #0081ff;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -113,3 +125,76 @@ i{ font-size: 1.3rem;}
     font-size: 1.2rem;
   }
 }
+
+//테블릿
+@media screen and (min-width: 768px ) and (max-width: 1023px){
+  .row{
+    li{
+      &:nth-child(3){
+        font-size: 15px;
+      }
+    }
+  }
+
+  .total-box{ margin-top: 30px;}
+
+}
+
+// 모바일
+@media screen and (max-width: 767px) {
+    .head{display: none;}
+    .wishlist, .basket{
+      width: 100%;
+      h2{font-size: 1.3rem;}
+    }
+    .row{
+      margin-top: 30px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      li{
+        &:nth-child(1){ height: 45px;}
+        &:nth-child(2){
+          order: 3;
+          width: 45%;
+        }
+        &:nth-child(3){
+          order: 2;
+          width: 85%;
+          line-height: 1.4;
+        }
+        &:nth-child(4){
+          width: 20%;
+          order: 4;
+        }
+        &:nth-child(5){
+          width: 45%;
+          order: 5;
+          .sum{
+            line-height: 45px;
+          }
+        }
+        &:nth-child(6){
+          width: 20%;
+          order: 6;
+        }
+        &:nth-child(7){
+          width: 100%;
+          order: 7;
+        }
+      }
+    }
+    .cart-body{
+      .row{
+        li{
+          &:nth-last-child(1){
+            width: 20%;
+          }
+        }
+      }
+    }
+    .total-box{ 
+      margin: 30px 0 20px;
+      .sumcount{ font-size: 1.2rem;}
+      .summoney{ font-size: 1.5rem;}
+    }
+} 

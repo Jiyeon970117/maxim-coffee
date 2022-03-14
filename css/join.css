@@ -56,6 +56,9 @@ ul {
 header {
   width: 100%;
   height: 80px;
+  overflow-y: hidden;
+  -webkit-transition: .5s;
+  transition: .5s;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -78,7 +81,6 @@ header .navbar {
 }
 
 header .navbar .navbar-logo {
-  width: 10%;
   height: 100%;
 }
 
@@ -98,8 +100,6 @@ header .navbar .navbar-menu {
 
 header .navbar .navbar-menu #horizontal-underline {
   position: absolute;
-  top: 0;
-  left: 0;
   background-color: #000;
   width: 0;
   height: 2px;
@@ -109,7 +109,7 @@ header .navbar .navbar-menu #horizontal-underline {
 
 header .navbar .navbar-menu li {
   position: relative;
-  padding: 8px 20px;
+  padding: 8px 20px 0;
 }
 
 header .navbar .navbar-menu li a {
@@ -118,27 +118,8 @@ header .navbar .navbar-menu li a {
   line-height: 40px;
 }
 
-header .navbar .navbar-menu li .category {
-  display: none;
-  position: absolute;
-  top: 70%;
-  left: -40%;
-  padding: 9px 0;
-  width: 170px;
-  background-color: #fff;
-}
-
-header .navbar .navbar-menu li .category ul {
-  text-align: center;
-}
-
-header .navbar .navbar-menu li .category ul a {
-  font-size: 14px;
-  font-weight: 200;
-}
-
-header .navbar .navbar-menu li .category.active {
-  display: block;
+header .navbar .navbar-menu li.active a {
+  font-weight: 600;
 }
 
 header .navbar .navbar-icons {
@@ -177,63 +158,284 @@ header .navbar .navbar-icons li:nth-of-type(2) a {
           align-items: center;
 }
 
-section {
-  width: 100%;
-  height: 100vh;
+header .navbar .navbar-toggle {
+  display: none;
+}
+
+footer {
+  padding: 2% 10%;
+  background-color: #fff;
+  color: #000;
+}
+
+.footer-wrap .f-info .info-1 {
+  margin-bottom: 27px;
+}
+
+.footer-wrap .f-info .info-1 strong {
+  font-weight: 700;
+}
+
+.footer-wrap .f-info .info-2 span, .footer-wrap .f-info .info-3 span {
+  padding-right: 7px;
+  line-height: 180%;
+  letter-spacing: 0.02em;
+  font-size: 13px;
+}
+
+.footer-wrap .f-guide {
+  margin-top: 15px;
+}
+
+.footer-wrap .f-guide p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-wrap .f-guide::after {
+  content: "";
+  display: block;
+  border: 1px solid #e8e8e8;
+}
+
+.f-guide-wrap {
+  padding-top: 15px;
+}
+
+.f-guide-wrap ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-section h2 {
-  margin-bottom: 50px;
-  font-size: 2rem;
+.f-guide-wrap ul li {
+  padding-right: 15px;
 }
 
-section form {
-  width: 25%;
+.f-guide-wrap ul li a {
+  font-family: "Montserrat", sans-serif;
+  color: #4a4a4a;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 767px) {
+  header .navbar {
+    width: 100%;
+    padding: 8px 12px;
+    margin: 0%;
+    background-color: #fff;
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  header .navbar .navbar-logo {
+    height: 65px;
+  }
+  header .navbar .navbar-logo img {
+    width: 100%;
+    height: 100%;
+  }
+  header .navbar .navbar-menu {
+    display: none;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  header .navbar .navbar-menu #horizontal-underline {
+    display: none;
+  }
+  header .navbar .navbar-menu li {
+    width: 100%;
+    text-align: center;
+  }
+  header .navbar .navbar-icons {
+    display: none;
+    width: 100%;
+    height: 50px;
+  }
+  header .navbar .navbar-toggle {
+    display: block;
+    position: fixed;
+    top: 3%;
+    right: 5%;
+    font-size: 24px;
+  }
+  header.active {
+    height: 100%;
+  }
+  header.active .navbar-menu, header.active .navbar-icons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  footer {
+    padding-bottom: 5%;
+  }
+  .footer-wrap .f-info .info-1 {
+    font-size: 15px;
+  }
+  .f-guide-wrap {
+    padding-top: 15px;
+  }
+  .f-guide-wrap ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .f-guide-wrap ul li {
+    padding-right: 14px;
+  }
+  .f-guide-wrap ul li a {
+    color: #4a4a4a;
+    font-size: 10px;
+  }
+}
+
+.wrap {
+  margin-top: 80px;
+}
+
+.content1 {
+  padding: 100px 0 0 0;
+}
+
+.content1 h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.content1 form {
+  width: 600px;
   margin: 0 auto;
 }
 
-section form input {
-  width: 100%;
-  height: 50px;
-  font-size: 1rem;
-  border: 1px solid #d9d9d9;
+.content1 form .container .join-content {
+  width: 80%;
+  margin: 0 auto;
 }
 
-section form input:first-child {
+.content1 form .container .join-content li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 30px;
+}
+
+.content1 form .container .join-content li h4 {
+  width: 40%;
+  text-align: center;
+  height: 100%;
+}
+
+.content1 form .container .join-content li h4 label {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  padding: 11px 6px;
+}
+
+.content1 form .container .join-content li input {
+  display: inline-block;
+  width: 60%;
+  line-height: 3;
+  font-size: 15px;
+}
+
+.content1 fieldset {
+  width: 80%;
+  margin: 0 auto;
+  border-color: #e6e6e6;
+}
+
+.content1 fieldset p {
   margin-bottom: 10px;
 }
 
-section form button {
-  width: 100%;
-  height: 60px;
-  font-size: 1.2rem;
-  border: 1px solid #d9d9d9;
+.content1 fieldset p label {
+  font-weight: 500;
+  color: #353535;
 }
 
-section form button a {
-  padding: 15px 30px;
+.content1 fieldset div {
+  height: 150px;
+  overflow-y: scroll;
+  border: 1px solid #000;
+  margin-bottom: 5px;
 }
 
-section form #login-btn {
-  margin: 30px 0 20px;
-  background-color: #000;
+.content1 button {
+  display: block;
+  width: 80%;
+  margin: 20px auto 0;
+  padding: 15px 12px;
+  text-align: center;
+  background-color: #353535;
   color: #fff;
+  font-size: 1.2rem;
 }
 
-section form #join-btn {
-  background-color: #ece9e9;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .content1 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
 }
-/*# sourceMappingURL=join.css.map */
+
+@media screen and (max-width: 767px) {
+  .content1 {
+    padding-top: 10px;
+  }
+  .content1 form {
+    width: 80%;
+  }
+  .content1 form .container .join-content {
+    width: 100%;
+  }
+  .content1 form .container .join-content li {
+    margin-bottom: 15px;
+  }
+  .content1 form .container .join-content li h4 {
+    text-align: left;
+  }
+  .content1 h2 {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+  }
+  .content1 fieldset, .content1 button {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=join2.css.map */

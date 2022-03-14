@@ -121,8 +121,9 @@
       padding: 5%;
       .product{
         .detail{
-          width: 500px;
-          height: 500px;
+          max-width: 500px;
+          height: auto;
+          // height: 500px;
           object-fit: cover;
           img{
             width: 100%;
@@ -147,6 +148,7 @@
       }
       .product-info{
         width: 55%;
+        margin-left: 5%;
         h2{
           margin-bottom: 50px;
         }
@@ -169,11 +171,12 @@
         }
 
         .product-btns{
-          @include flexbox;
+          @include flexbox(start);
           div{
+            width: 30%;
             a{
               display: inline-block;
-              width: 150px;
+              width: 100%;
               line-height: 70px;
               background: #fff;
               text-align: center;
@@ -192,8 +195,8 @@
               }
             }
             &:nth-of-type(1){
+              width: 40%;
               a{
-                width: 230px;
                 color: #fff;
                 background-color: #000;
                 &:hover{
@@ -202,8 +205,8 @@
               }
             }    
           }
-
         }
+
       }
     }
   }
@@ -218,4 +221,153 @@
   i{
     font-size: 2rem;
   }
+}
+
+
+
+// 데스크탑
+@media screen and (min-width:1024px) {
+  .popup .modal{
+    min-width: 950px;
+    padding: 5%;
+  }
+  .popup .modal .row1 .product .detail{
+    min-width: 350px;
+    height: auto;
+  }
+}
+
+//테블릿
+@media screen and (min-width: 768px) and (max-width:1023px){
+
+  .content1{
+    .banner{
+      margin-bottom: 20px;
+    }
+    div .Items{
+      li{
+        width: calc(100%/3);
+        height: auto;
+        .fa-heart, .fa-shopping-cart{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  // 팝업
+  .popup{
+    .modal{
+      width: 90%;
+      padding: 5%;
+      .row1{
+        .product{
+          width: 50%;
+          .detail{
+            min-width: 270px;
+          }
+        }
+        .product-info{
+          h2{
+            margin-bottom: 0;
+          }
+          table{
+            margin-top: 0;
+            margin-bottom: 20px;
+            td{
+              span{
+                font-size: 15px;
+              }
+            }
+          }
+        }
+  
+      }
+    }
+  }
+}
+
+
+
+// 모바일
+@media screen and (max-width: 767px){
+  .content1{
+    .menu-categorybox{
+      margin-bottom: 50px;
+    }
+    .banner{
+      margin-bottom: 20px;
+    }
+    .menucategory{
+      li{
+        width: 100%;
+        line-height: 30px;
+        border-left: 0;
+        a{
+          padding: 5%;
+        }
+      }
+    }
+    .product-listmenus{
+      li{
+        font-size: 13px;
+      }
+    }
+    div .Items{
+      li{
+        width: 100%;
+        height: auto;
+        .fa-heart, .fa-shopping-cart{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  // 팝업
+  .popup{
+    .modal{
+      width: 100%;
+      padding: 5% 0;
+      .row1{
+        flex-direction: column;
+        .product{
+          // width: 70%;
+          .detail{
+            // min-width: 150px;
+            max-width: 160px;
+            margin: 0 auto;
+          }
+          .img-list{
+            margin-top: 20px;
+            justify-content: center
+          }
+        }
+        .product-info{
+          width: 90%;
+          h2{
+            line-height: 35px;
+            margin-bottom: 0;
+            font-size: 1rem;
+          }
+          table{
+            margin-top: 0;
+            margin-bottom: 20px;
+            td{
+              padding-top: 5px;
+              padding-bottom: 0;
+              span{
+                font-size: 15px;
+              }
+            }
+          }
+        }
+  
+      }
+    }
+  }
+  .close{
+    color: #000;
+  }
+
 }

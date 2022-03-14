@@ -62,8 +62,8 @@ function Cart(){
         ToCount += i;
         ToPrice += parseInt(list.price.replace('원', '').replace(',', ''))
       })
-      SumCount.innerText = `상품갯수: ${ToCount}개`;
-      totalPrice.innerText = `합계금액: ${ToPrice.toLocaleString()}원`;
+      SumCount.innerText = `상품: ${ToCount}개`;
+      totalPrice.innerText = `합계: ${ToPrice.toLocaleString()}원`;
     }
 
     function HtmlString(list, i){
