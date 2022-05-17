@@ -37,4 +37,4 @@ function init(){
   Tabs.addEventListener('click', (e) => TabBtn(e));
 
 }
-window.onload = init;
+window.addEventListener('DOMContentLoaded',init);

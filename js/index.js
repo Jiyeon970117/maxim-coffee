@@ -1,8 +1,8 @@
 'use strict';
 
-const textBox = document.querySelector('.in-1')
 function init(){
-  const Logo = document.querySelector('.main-logo')
+  const textBox = document.querySelector('.in-1');
+  const content = document.querySelector('.content3');
 
   $('.main-img').slick({
     dots: true,
@@ -16,14 +16,13 @@ function init(){
     cssEase:'linear',
   });
 
-  Logo.setAttribute('src', './img/main-logo2.png');
-  // window.innerWidth > 668 ? Logo.setAttribute('src', './img/main-logo2.png') : '';
 
   window.addEventListener('scroll', () => {
     let value = window.scrollY;
-    value > 3400 ? textBox.style.animation = 'slide 1s ease-out': textBox.style.animation = 'invisible 1s ease-out forwards'
+    value > content.offsetTop - 300 ? textBox.style.animation = 'slide 1s ease-out': textBox.style.animation = 'invisible 1s ease-out forwards';
   });
 
-
+  console.log('여긴 index')
 }
-window.onload = init;
+// window.onload = init;
+window.addEventListener('DOMContentLoaded',init);

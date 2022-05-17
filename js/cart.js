@@ -6,6 +6,7 @@ const totalPrice = document.querySelector('.summoney');
 const Input = document.querySelectorAll('.B-num input');
 const List = document.querySelector('.list');
 
+
 //로컬스토리지
 let savedList = JSON.parse(localStorage.getItem('list'));
 let savedCart = JSON.parse(localStorage.getItem('cart'));
@@ -15,11 +16,10 @@ let listCart;
 let count = 1;
 let Change;
 function Cart(){
-
-  function loadItems(){
-    return fetch('js/data.json')
-          .then((res) => res.json())
-          .then( (json) => json.list);
+  async function loadItems(){
+    const res = await fetch('js/data.json');
+    const json = await res.json();
+    return json.list;
   }
   function render(list){
     // 위시리스트
@@ -51,6 +51,11 @@ function Cart(){
                 <li> ${write}</li>
               </ul>`
     }
+
+    function CountUp(){
+      const menuCount = document.querySelector('.menu-count');
+      menuCount.innerText = `(${listCart.length})`;
+    };
 
     //합계
     function totalText(){
@@ -121,6 +126,7 @@ function Cart(){
           createHtml(Cbody, listCart)
           totalText()
           setEventListeners()
+          CountUp()
       }else{
         alert('상품을 선택해주세요');
       }
@@ -131,6 +137,7 @@ function Cart(){
       let totalNum = Product.parentNode.querySelectorAll('.B-num input');
       const checkBox = Product.querySelector('input[name="checkbox"]');
       const SumPrice = Product.parentNode.querySelectorAll('.B-sum');
+      const menuCount = document.querySelector('.menu-count');
       let ToCount = 0;
       let TOPrice = 0;
       if(Product.parentNode.className == 'cart-body' && checkBox.checked){
@@ -141,6 +148,7 @@ function Cart(){
             TOPrice += $price;
         })
         SumCount.innerText = `상품갯수: ${ToCount}개`;
+        menuCount.innerText = `(${ToCount})`;
         totalPrice.innerText = `합계금액: ${TOPrice.toLocaleString()}원`;
       }else if(Product.parentNode.className == 'list-body') return;
       else{
@@ -176,6 +184,7 @@ function Cart(){
         Product.remove();
         listCart = list.filter((list) => savedCart.includes(list.number))
         totalText()
+        CountUp()
       }else{
         alert('상품을 선택해주세요');
       }
@@ -184,7 +193,6 @@ function Cart(){
     //합계
     function calculate(){
       const Product = this.parentNode.parentNode.parentNode;
-      console.log(Product)
       const SumPrice = Product.querySelector('.B-sum')
       const Input = Product.querySelector('.B-num input');
       let Value = parseInt(Input.getAttribute('value'))
@@ -210,13 +218,8 @@ function Cart(){
       CartList.forEach( (list) => list.addEventListener('click', Basket))
     }
     setEventListeners()
-
   }
   
-
-
-
-
   loadItems()
   .then( (list) => {
     render(list)
@@ -224,5 +227,6 @@ function Cart(){
   .catch()
 
 }
-window.onload = Cart;
+window.addEventListener('DOMContentLoaded',Cart);
+
 

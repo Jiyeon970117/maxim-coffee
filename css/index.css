@@ -81,7 +81,9 @@ header .navbar {
 }
 
 header .navbar .navbar-logo {
+  width: 100px;
   height: 100%;
+  background: url("../img/main-logo3.png") no-repeat center/contain;
 }
 
 header .navbar .navbar-menu {
@@ -317,6 +319,10 @@ footer {
 header {
   color: #fff;
   background-color: transparent;
+}
+
+header .navbar .navbar-logo {
+  background-image: url("../img/main-logo2.png");
 }
 
 header .navbar .navbar-menu #horizontal-underline {

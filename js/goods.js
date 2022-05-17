@@ -8,10 +8,10 @@ import PopupHtmlString from "./popupcreate.js";
 function init(){
 
   // console.log('heoll')
-  function loadItems(){
-    return fetch('js/data.json')
-          .then((res) => res.json())
-          .then( (json) => json.list);
+  async function loadItems(){
+    const res = await fetch('js/data.json');
+    const json = await res.json();
+    return json.list;
   }
 
   function render(list){
@@ -167,5 +167,5 @@ function init(){
   })
   .catch()
 
-}
-window.onload = init;
+};
+window.addEventListener('DOMContentLoaded',init);

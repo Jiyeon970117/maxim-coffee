@@ -14,23 +14,25 @@ let regId = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/,
 
 import Attention from './attention.js';
 
-//약관동의 모두체크
-function checkBox(){
+function init(){
+
+  //약관동의 모두체크
+  function checkBox(){
     agree.checked = all.checked;
     poll.checked = all.checked; 
-}
+  }
 
-//약관동의 체크
-function check(){
+  //약관동의 체크
+  function check(){
   if(agree.checked && poll.checked){
     all.checked = true;
   }else if(!agree.checked || !poll.checked){
     all.checked = false;
   }
-}  
+  }  
 
-//회원가입 폼 유효성 검사
-function verify(){
+  //회원가입 폼 유효성 검사
+  function verify(){
   if(UserName.value == ""){   
     Attention(UserName,'이름을 입력하세요')
     return
@@ -71,16 +73,18 @@ function verify(){
     alert('개인정보 동의를 클릭해주세요')
     return
   }
-}
+  }
 
-//회원가입버튼
-function joinClick(e){  
+  //회원가입버튼
+  function joinClick(e){  
   e.preventDefault();
   verify();
-}
+  }
 
-all.addEventListener('click', checkBox);
-agree.addEventListener('click', check);
-poll.addEventListener('click', check);
-Btn.addEventListener('click',joinClick);
+  all.addEventListener('click', checkBox);
+  agree.addEventListener('click', check);
+  poll.addEventListener('click', check);
+  Btn.addEventListener('click',joinClick);
 
+};
+window.addEventListener('DOMContentLoaded',init);

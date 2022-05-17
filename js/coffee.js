@@ -21,10 +21,10 @@ import createHtmlString from "./htmlcreate.js";
 
 function init(){
 
-  function loadItems(){
-    return fetch('js/data.json')
-          .then( (res) => res.json() )
-          .then( (json) => json.list );
+  async function loadItems(){
+    const res = await fetch('js/data.json');
+    const json = await res.json();
+    return json.list;
   }
 
   //render
@@ -76,7 +76,7 @@ function init(){
     }
     // createItem( list.filter((item) => item[key] === value))
     UpdateItem(list,key,value)
-  }
+  };
 
   //category update
   function UpdateItem(list,key,value){
@@ -90,17 +90,7 @@ function init(){
         PrdList[index].classList.add('invisible')
       }
     });
-  }
-
-
-
-
-
-
-
-
-    
-
+  };
 
   let $Count = 0;
 
@@ -112,7 +102,7 @@ function init(){
       $Count = JSON.parse(savedCart).length;
     }
     menuCount.innerText = `(${$Count})`;
-  }
+  };
 
 
 
@@ -134,7 +124,6 @@ function init(){
     if(List.classList.contains('far')){
       alert('위시리스트에 추가됐습니다.');
       List.classList.replace('far', 'fas');
-      console.log(typeof listBox)
       listBox.push(ListId)
       localStorage.setItem('list', JSON.stringify(listBox));
       return
@@ -145,7 +134,7 @@ function init(){
       localStorage.setItem('list', JSON.stringify(listBox));
       return
     }
-      List.classList.replace('far', 'fas')
+      // List.classList.replace('far', 'fas')
   }
 
 
@@ -207,4 +196,4 @@ function init(){
   })
   .catch(console.log);
 }
-window.onload = init;
+window.addEventListener('DOMContentLoaded',init);
